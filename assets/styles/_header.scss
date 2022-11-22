@@ -1,0 +1,31 @@
+.headerCenter {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+
+  header {
+    width: 80%;
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+      letter-spacing: 1px;
+      text-decoration:none;
+
+
+      .iconHeader {
+        width: 20%;
+        height: auto;
+        margin-right: 2%;
+
+      }
+    }
+  }
+}

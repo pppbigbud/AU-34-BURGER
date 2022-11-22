@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TacosController!{% endblock %}
+
+{% block main %}
+{#    <h1>TACOS CONFIGURATEUR</h1>#}
+
+    <div class="alignementBackground">
+
+        <img src="{{ asset('build/images/tacos.png') }}" class="imageTacosForm" alt="tacos">
+
+
+        <div class="backgroundTacosConfig">
+
+            {{ form_start(form) }}
+
+            <div class="alignementTacosConfigSize">
+                <div class="tailleTacos">
+                    <img src="{{ asset('build/images/tacosSize.png') }}" alt="tacos" class="imageSauceForm">
+                    {{ form_row(form.size) }}
+                </div>
+                <div class="viandeTacos">
+                    <img src="{{ asset('build/images/tacosMeat.png') }}" alt="tacos" class="imageSauceForm">
+                    {{ form_row(form.meat) }}
+                </div>
+            </div>
+
+            <div class="alignementTacosConfigSauce">
+                <div class="sauceTacos">
+                    <img src="{{ asset('build/images/sauceTacos.png') }}" alt="tacos" class="imageSauceForm">
+                    {{ form_row(form.sauce) }}
+                </div>
+                <div class="fromageTacos">
+                    <img src="{{ asset('build/images/cheeseTacosConfig.png') }}" alt="tacos" class="imageSauceForm">
+                    {{ form_row(form.cheese) }}
+                </div>
+            </div>
+
+
+            {% if app.user != null %}
+                <container class="d-flex justify-content-center m-4">
+                    <button type="submit" class="btnAjoutCart"><i class="fa-solid fa-cart-plus"></i> Ajouter au Panier</button>
+                </container>
+            {% else %}
+                <container class="d-flex justify-content-center m-4">
+                    <a class="btnAjoutCart m-2" href="{{ path('app_register') }}"><i class="fa-solid fa-person-chalkboard"></i> Créer un compte</a>
+                    <a class="btnAjoutCart m-2" href="{{ path('app_login') }}"><i class="fa-solid fa-key"></i> Se connecter</a>
+                </container>
+            {% endif %}
+
+
+
+            {#        {% if app.user == null %} #}
+
+            {#            <a href="{{ path('app_login') }}"> #}
+            {#                <img class="imgCartSide" #}
+            {#                     src="{{ asset('build/images/userIcon.png') }}" #}
+            {#                     alt="ACME logo"></a> #}
+
+            {#            <div class="connectUserSideCart"> #}
+            {#                <p>Se<br> #}
+            {#                    Connecter</p> #}
+            {#            </div> #}
+
+            {#        {% else %} #}
+
+
+            {#            <div class="alignementBTNTacosConfig"> #}
+            {#                <button type="submit" class="btnAjoutCart"> #}
+            {#                    Ajouter au Panier #}
+            {#                </button> #}
+            {#            </div> #}
+
+            {#            <div class="nameUserSideCart"> #}
+            {#                <p>Bienvenu(e)<br> #}
+            {#                    #}{#                                    {{ app.user.firstname }} <br> #}
+            {#                    #}{#                                    {{ app.user.lastname }}</p> #}
+            {#            </div> #}
+
+            {#        {% endif %} #}
+
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+.dash {
+  border: 0.5rem dashed #242424;
+  border-radius: 5%;
+  padding: 3%;
+  background-color: #a6a6a6;
+  box-shadow:5px 5px 60px -5px darken(#a6a6a6, 5%);
+
+  .btnCentrage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
