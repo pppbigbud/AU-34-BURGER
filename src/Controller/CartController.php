@@ -4,10 +4,11 @@ namespace App\Controller;
 
 use App\Repository\DrinkRepository;
 use App\Repository\TacosRepository;
-use App\Services\CartServices;
+use App\Services\CartService;
 use App\Repository\BurgerRepository;
 //use Flasher\Prime\Flasher;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,27 +32,6 @@ class CartController extends AbstractController
         $totalDrink = 0;
         $totalArticles = 0;
 
-        $totalBurgerSideCart = 0;
-        $totalTacosSideCart = 0;
-        $totalDrinkSideCart = 0;
-
-// ---------------------------SESSION SIDECART---------------------------------------------------
-
-        $sessionPanier = ($session->get('panier'));
-
-        if ($sessionPanier === []) {
-            $totalArticles = 0;
-        } else {
-            if (isset($sessionPanier['tacos'])&& empty($sessionPanier['tacos'])) {
-                $totalTacosSideCart = array_sum($sessionPanier['tacos']);
-            }
-            if (isset($sessionPanier['burger'])&& empty($sessionPanier['burger'])){
-                $totalBurgerSideCart = array_sum($sessionPanier['burger']);
-            }
-            if (isset($sessionPanier['drink'])&& empty($sessionPanier['drink'])){
-                $totalDrinkSideCart = array_sum($sessionPanier['drink']);
-            }
-        }
 
 // ---------------------------SESSION CART BURGER et TACOS---------------------------------------------------
 
@@ -96,8 +76,6 @@ class CartController extends AbstractController
             }
         }
 
-        dump($panierWithData['drink']);
-
             return $this->render('cart/index.html.twig', [
                 'itemsTotal' => $totalBurger + $totalTacos + $totalDrink,
                 'itemsBurger' => $panierWithData['burger'],
@@ -109,17 +87,16 @@ class CartController extends AbstractController
                 'items' => $panier,
                 'session' => $session,
                 'totalArticles' => $totalArticles,
-                'totalBurgerSideCart' => $totalBurgerSideCart,
-                'totalTacosSideCart' => $totalTacosSideCart,
-                'totalDrinkSideCart' => $totalDrinkSideCart,
-
             ]);
         }
 //    ----------------------AJOUT et SUP BURGER--------------------------
 
         #[Route('/panier/add/burger/{id}', name: 'cart_add_burger_id')]
-    public function addBurger(SessionInterface $session, CartServices $cartServices, $id): Response
+    public function addBurger(Request $request, SessionInterface $session, CartService $cartServices, $id): Response
     {
+//        if($request->query->get('frite')){
+//ce que m'a dit JULES
+//        }
         $cartServices->addBurger($session, $id);
 
         return $this->redirectToRoute('app_burger_index');
@@ -141,7 +118,7 @@ class CartController extends AbstractController
 //    ----------------------AJOUT et SUP TACOS--------------------------
 
 //    #[Route('/panier/add/tacos/{id}', name: 'cart_add_tacos_id')]
-//    public function addTacos(SessionInterface $session, CartServices $cartServices, $id): Response
+//    public function addTacos(SessionInterface $session, CartService $cartServices, $id): Response
 //    {
 //        $cartServices->addTacos($session, $id);
 //
@@ -165,7 +142,7 @@ class CartController extends AbstractController
 
 
     #[Route('/panier/add/drink/{id}', name: 'cart_add_drink_id')]
-    public function addDrink(SessionInterface $session, CartServices $cartServices, $id): Response
+    public function addDrink(SessionInterface $session, CartService $cartServices, $id): Response
     {
         $cartServices->addDrink($session, $id);
 

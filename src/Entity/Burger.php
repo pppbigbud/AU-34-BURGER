@@ -35,6 +35,9 @@ class Burger
     #[ORM\Column(nullable: true)]
     private ?int $durationS = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $frites = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -127,6 +130,18 @@ class Burger
     public function __toString(): string
     {
        return $this->getFrie();
+    }
+
+    public function isFrites(): ?bool
+    {
+        return $this->frites;
+    }
+
+    public function setFrites(?bool $frites): self
+    {
+        $this->frites = $frites;
+
+        return $this;
     }
 
 

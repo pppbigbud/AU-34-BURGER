@@ -8,7 +8,7 @@ use App\Form\BurgerType;
 use App\Form\FrieType;
 use App\Repository\BurgerRepository;
 use App\Repository\FrieRepository;
-use App\Services\CartServices;
+use App\Services\CartService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,52 +20,24 @@ use Symfony\Component\Routing\Annotation\Route;
 class BurgerController extends AbstractController
 {
     #[Route('/', name: 'app_burger_index', methods: ['GET'])]
-    public function index(Session $session,
-                          BurgerRepository $burgerRepository,
-                          CartServices $cartServices,
-                          Request $request): Response
+    public function index(BurgerRepository $burgerRepository): Response
     {
-
-        $totalBurgerSideCart = 0;
-        $totalTacosSideCart = 0;
-        $totalDrinkSideCart = 0;
-
-// ---------------------------SESSION SIDECART---------------------------------------------------
-
-        $sessionPanier = ($session->get('panier'));
-
-        if ($sessionPanier === null) {
-            $totalArticles = 0;
-        } else {
-            if (isset($sessionPanier['tacos'])) {
-                $totalTacosSideCart = array_sum($sessionPanier['tacos']);
-            }
-            if (isset($sessionPanier['burger'])){
-                $totalBurgerSideCart = array_sum($sessionPanier['burger']);
-            }
-            if (isset($sessionPanier['drink'])){
-                $totalDrinkSideCart = array_sum($sessionPanier['drink']);
-            }
-        }
 
 //        --------------------------FORM FRIE-----------------------------
 
-        $burger = new Burger();
-        $form = $this->createForm(BurgerType::class);
-        $form->handleRequest($request);
-
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $burgerRepository->save($burger, true);
-            $cartServices->addFrie($session, $burger);
-        }
+//        $burger = new Burger();
+//        $form = $this->createForm(BurgerType::class);
+//        $form->handleRequest($request);
+//
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $burgerRepository->save($burger, true);
+//            $cartServices->addFrie($session, $burger);
+//        }
 
         return $this->render('burger/index.html.twig', [
             'burgers' => $burgerRepository->findAll(),
-            'totalBurgerSideCart' => $totalBurgerSideCart,
-            'totalTacosSideCart'  => $totalTacosSideCart,
-            'totalDrinkSideCart' => $totalDrinkSideCart,
-            'form' => $form->createView(),
+//            'form' => $form->createView(),
         ]);
     }
 
@@ -85,7 +57,7 @@ class BurgerController extends AbstractController
 
         return $this->renderForm('burger/new.html.twig', [
             'burger' => $burger,
-            'form' => $form,
+//            'form' => $form,
         ]);
     }
 
@@ -113,7 +85,7 @@ class BurgerController extends AbstractController
 
         return $this->renderForm('burger/edit.html.twig', [
             'burger' => $burger,
-            'form' => $form,
+//            'form' => $form,
         ]);
     }
 

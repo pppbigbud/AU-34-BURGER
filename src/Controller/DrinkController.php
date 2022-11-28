@@ -15,37 +15,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class DrinkController extends AbstractController
 {
     #[Route('/', name: 'app_drink_index', methods: ['GET'])]
-    public function index(SessionInterface $session, DrinkRepository $drinkRepository): Response
+    public function index(DrinkRepository $drinkRepository): Response
     {
 
         {
-            $totalBurgerSideCart = 0;
-            $totalTacosSideCart = 0;
-            $totalDrinkSideCart = 0;
-
-// ---------------------------SESSION SIDECART---------------------------------------------------
-
-            $sessionPanier = ($session->get('panier'));
-
-            if ($sessionPanier === null) {
-                $totalArticles = 0;
-            } else {
-                if (isset($sessionPanier['tacos'])) {
-                    $totalTacosSideCart = array_sum($sessionPanier['tacos']);
-                }
-                if (isset($sessionPanier['burger'])){
-                    $totalBurgerSideCart = array_sum($sessionPanier['burger']);
-                }
-                if (isset($sessionPanier['drink'])){
-                    $totalDrinkSideCart = array_sum($sessionPanier['drink']);
-                }
-            }
-
             return $this->render('drink/index.html.twig', [
                 'drinks' => $drinkRepository->findAll(),
-                'totalBurgerSideCart' => $totalBurgerSideCart,
-                'totalTacosSideCart'  => $totalTacosSideCart,
-                'totalDrinkSideCart' => $totalDrinkSideCart,
             ]);
         }
     }
@@ -65,7 +40,7 @@ class DrinkController extends AbstractController
 
         return $this->renderForm('drink/new.html.twig', [
             'drink' => $drink,
-            'form' => $form,
+//            'form' => $form,
         ]);
     }
 
@@ -91,7 +66,7 @@ class DrinkController extends AbstractController
 
         return $this->renderForm('drink/edit.html.twig', [
             'drink' => $drink,
-            'form' => $form,
+//            'form' => $form,
         ]);
     }
 

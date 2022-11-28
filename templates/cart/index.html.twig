@@ -3,10 +3,9 @@
     {% block title %}Panier{% endblock %}
 
     {% block main %}
-        {{ dump(session) }}
-        {{ dump(itemsTacos) }}
+
         {#           --------------------------------------------------------- CART BURGER -------------------------------------------------------                 #}
-        <container class="d-flex justify-content-center align-items-center flex-column">
+        <div class="d-flex justify-content-center align-items-center flex-column">
 
             {% if itemsBurger | length > 0 %}
 
@@ -65,11 +64,11 @@
 
             {% endif %}
 
-        </container>
+        </div>
 
         {#           --------------------------------------------------------- CART TACOS -------------------------------------------------------                 #}
 
-        <container class="d-flex justify-content-center align-items-center flex-column">
+        <div class="d-flex justify-content-center align-items-center flex-column">
 
             {% if itemsTacos | length > 0 %}
 
@@ -142,11 +141,11 @@
 
             {% endif %}
 
-        </container>
+        </div>
 
         {#           --------------------------------------------------------- CART DRINK et FRITES-------------------------------------------------------                 #}
 
-        <container class="d-flex justify-content-center align-items-center flex-column">
+        <div class="d-flex justify-content-center align-items-center flex-column">
 
             {% if itemsDrink | length > 0 %}
 
@@ -191,19 +190,19 @@
 
                 </table>
             {% endif %}
-        </container>
+        </div>
 
         {% if itemsTotal > 0 %}
 
-            <container class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center">
                 <div class="d-flex justify-content-end w-75"><h1>Votre Total {{ itemsTotal }} €</h1></div>
-            </container>
+            </div>
 
-            <container class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center">
                 <div class="d-flex justify-content-end w-75">
                     <button>Passer au paiement</button>
                 </div>
-            </container>
+            </div>
 
         {% endif %}
 

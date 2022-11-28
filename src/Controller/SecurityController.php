@@ -13,27 +13,6 @@ class SecurityController extends AbstractController
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils, SessionInterface $session): Response
     {
-        $totalBurgerSideCart = 0;
-        $totalTacosSideCart = 0;
-        $totalDrinkSideCart = 0;
-
-// ---------------------------SESSION SIDECART---------------------------------------------------
-
-        $sessionPanier = ($session->get('panier'));
-
-        if ($sessionPanier === null) {
-            $totalArticles = 0;
-        } else {
-            if (isset($sessionPanier['tacos'])) {
-                $totalTacosSideCart = array_sum($sessionPanier['tacos']);
-            }
-            if (isset($sessionPanier['burger'])){
-                $totalBurgerSideCart = array_sum($sessionPanier['burger']);
-            }
-            if (isset($sessionPanier['drink'])){
-                $totalDrinkSideCart = array_sum($sessionPanier['drink']);
-            }
-        }
 
         // if ($this->getUser()) {
         //     return $this->redirectToRoute('target_path');
@@ -46,9 +25,6 @@ class SecurityController extends AbstractController
 
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername, 'error' => $error,
-            'totalBurgerSideCart' => $totalBurgerSideCart,
-            'totalTacosSideCart'  => $totalTacosSideCart,
-            'totalDrinkSideCart' => $totalDrinkSideCart,
         ]);
     }
 

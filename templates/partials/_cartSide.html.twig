@@ -1,3 +1,6 @@
+
+{% dump('ici') %}
+{% dump %}
 <div class="blocPanier">
 
     <div class="CartSideQuantity">
@@ -18,9 +21,9 @@
 
 {#--------------------------------TACOS-------------------------------------#}
 
-        {% if totalTacosSideCart > 0 %}
+        {% if totalTacosSideCart  > 0 %}
             <div class="rondPriceTacos">
-                    {{ totalTacosSideCart }}
+                    {{ totalTacosSideCart | length  }}
             </div>
             <div class="tacosSideCartImg">
                 <img src="{{ asset( 'build/images/tacosPanier.png') }}"
@@ -32,9 +35,9 @@
 
 {#--------------------------------DRINK-------------------------------------#}
 
-        {% if totalDrinkSideCart > 0 %}
+        {% if totalDrinkSideCart  > 0 %}
             <div class="rondPriceDrink">
-                {{ totalDrinkSideCart }}
+                {{ totalDrinkSideCart | length  }}
             </div>
             <div class="drinkSideCartImg">
                 <img src="{{ asset( 'build/images/frittesPanier.png') }}"

@@ -16,16 +16,16 @@
 
                 <img class="btnFrite" src="{{ asset( 'build/images/fites2€.png') }}" alt="frites">
 
-                {{ form_start(form) }}
-                {{ form_end(form) }}
+{#                {{ form_start(form) }}#}
+{#                {{ form_end(form) }}#}
 
             {% endif %}
         </div>
 
         {% if app.user != null %}
-            <a class="btnAjoutCart" href="{{ path('cart_add_burger_id', { 'id': burger.id}) }}"><i
+            <a class="btnAjoutCart" data-url-redir="{{ path('cart_add_burger_id', { 'id': burger.id}) }}" href="{{ path('cart_add_burger_id', { 'id': burger.id}) }}"><i
                         class="fa-solid fa-cart-plus"></i> Ajouter au Panier</a>
-            {# TODO Demander a Allan pourquoi l'authentification ne fonctionne pas #}
+
             {#        {% elseif is_granted("ROLE_ADMIN") %} #}
             <a class="btnModifierCart" href="{{ path('app_burger_edit', {'id': burger.id}) }}">Modifier</a>
 
