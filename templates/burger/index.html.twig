@@ -10,4 +10,44 @@
             {% endfor %}
         </div>
     </div>
+
+    <script>
+        // const btnFrites = document.getElementById('frites');
+
+        function selectFrite() {
+
+            let stateObj = {id: "100"};
+
+            if (document.getElementById('frites').checked === true) {
+
+                window.history.replaceState(stateObj,
+                    "Avec Frites", "/🍟.html");
+
+            } else if (document.getElementById('frites').checked === false) {
+
+                window.history.replaceState(stateObj,
+                    "Sans Frites", "/🍔.html");
+            }
+
+            console.log("CLICKED");
+        }
+
+
+        function selectFriteCmd() {
+
+            sessionStorage.setItem("frite",0);
+
+            let frite = parseInt(sessionStorage.getItem("frite"));
+            if(frite === 0){
+                sessionStorage.setItem("frite",frite + 1);
+            }else{
+                sessionStorage.setItem("frite", 1);
+            }
+
+            console.log(frite);
+            console.log(sessionStorage);
+        }
+
+    </script>
+
 {% endblock %}

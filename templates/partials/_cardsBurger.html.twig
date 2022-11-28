@@ -13,17 +13,14 @@
         <div class="prix">
             <p class="prixBurger">{{ burger.price }} €</p>
             {% if app.user != null %}
-
-                <img class="btnFrite" src="{{ asset( 'build/images/fites2€.png') }}" alt="frites">
-
-{#                {{ form_start(form) }}#}
-{#                {{ form_end(form) }}#}
+                <input onclick="selectFrite()" type="checkbox" id="frites">
+                <img class="btnFrite" src="{{ asset( 'build/images/fites2€.png') }}" alt="frites" >
 
             {% endif %}
         </div>
 
         {% if app.user != null %}
-            <a class="btnAjoutCart" data-url-redir="{{ path('cart_add_burger_id', { 'id': burger.id}) }}" href="{{ path('cart_add_burger_id', { 'id': burger.id}) }}"><i
+            <a class="btnAjoutCart" onclick="selectFriteCmd()" data-url-redir="{{ path('cart_add_burger_id', { 'id': burger.id}) }}" href="{{ path('cart_add_burger_id', { 'id': burger.id}) }}"><i
                         class="fa-solid fa-cart-plus"></i> Ajouter au Panier</a>
 
             {#        {% elseif is_granted("ROLE_ADMIN") %} #}
