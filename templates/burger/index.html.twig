@@ -12,41 +12,47 @@
     </div>
 
     <script>
-        // const btnFrites = document.getElementById('frites');
+        // Au chargement de la page je charge ma fonction
+        window.addEventListener('load', () => {
+            setUpClickEventAddItem();
+        });
 
-        function selectFrite() {
+        //fonctions quand je clic
+        function setUpClickEventAddItem() {
 
-            let stateObj = {id: "100"};
+            //Ecoute l'element grace à un data-attribute
+            // (et par sécurité pour éviter les injections)
 
-            if (document.getElementById('frites').checked === true) {
+            let checkbox = document.querySelectorAll('[data-url-redir]');
 
-                window.history.replaceState(stateObj,
-                    "Avec Frites", "/🍟.html");
-
-            } else if (document.getElementById('frites').checked === false) {
-
-                window.history.replaceState(stateObj,
-                    "Sans Frites", "/🍔.html");
-            }
-
-            console.log("CLICKED");
+            //Boucle sur le tableau data-attribute
+            checkbox.forEach(input => {
+                input.addEventListener('change', function () {
+                    const BurgerId = input.getAttribute('data-url-redir');
+                    if (input.checked === true) {
+                        let datasToSend = {
+                            BurgerId,
+                            'Frites': 1,
+                        };
+                        console.log('click')
+                        console.log(BurgerId)
+                        console.log(datasToSend)
+                    } else {
+                        console.log('unclick')
+                    }
+                })
+            })
         }
 
-
-        function selectFriteCmd() {
-
-            sessionStorage.setItem("frite",0);
-
-            let frite = parseInt(sessionStorage.getItem("frite"));
-            if(frite === 0){
-                sessionStorage.setItem("frite",frite + 1);
-            }else{
-                sessionStorage.setItem("frite", 1);
-            }
-
-            console.log(frite);
-            console.log(sessionStorage);
-        }
+        // if (checkbox) {
+        //     for (let i = 0; i < checkbox.length; i++) {
+        // //On selectionne l'Input
+        //         let input = document.querySelector('.frites')
+        //         input.addEventListener('change', function() {
+        //             window.alert('testdemerde')
+        //         })
+        //     }
+        // }
 
     </script>
 

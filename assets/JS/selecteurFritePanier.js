@@ -1,10 +1,45 @@
-// const btnFrites = document.getElementById('frites');
+// function selectFrite(burgerId) {
+//     for (let i = 0; i < burgerId.length; i++) {
 //
-// function selectFrite() {
-//     btnFrites.style = "none";
-//     console.log("CLICKED");
+//         if (burgerId.checked) {
+//             console.log("AVEC FRITES");
+//         } else {
+//             console.log("SANS FRITES");
+//         }
+//     }
 // }
 
-// console.log("CLICKED");
+// function selectFriteCmd() {
+//
+//     const loc = document.location.search;
+//
+//     if (loc === '?burger+Frites.html') {
+//         sessionStorage.setItem('frites', 1)
+//         console.log("AVEC FRITES");
+//
+//     } else {
+//         console.log("SANS FRITES");
+//     }
+// }
+// console.log(sessionStorage);
 
-
+// let Burger = burgerId;
+// // let stateObj = {id: "100"};
+//
+// if (document.querySelector("#frites")) {
+//
+//     // window.history.replaceState(stateObj,
+//     //
+//     //     "Avec Frites", "/Burger+Frites.html");
+//
+//     console.log("CLICKED");
+//
+// } else {
+//
+//     // window.history.replaceState(stateObj,
+//     //     "Sans Frites", "/BurgerSansFrites.html");
+//
+//     console.log("UNCLIMBED");
+// }
+//
+// console.log(burgerId)
