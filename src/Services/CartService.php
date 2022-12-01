@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CartService
 {
-    public function addBurger(SessionInterface $session, string $id): void
+    public function addBurgerToCart(SessionInterface $session, string $id): void
     {
         $panier = $session->get('panier', []);
 

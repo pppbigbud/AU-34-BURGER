@@ -19,31 +19,30 @@
 
         //fonctions quand je clic
         function setUpClickEventAddItem() {
-
-            //Ecoute l'element grace à un data-attribute
-            // (et par sécurité pour éviter les injections)
-
-            let checkbox = document.querySelectorAll('[data-url-redir]');
-
+            //Écoute element grace à un data-attribute
+            //(et par sécurité pour éviter les injections)
+            let addToCartBTN = document.querySelectorAll('[data-add-burger-cart]');
             //Boucle sur le tableau data-attribute
-            checkbox.forEach(input => {
-                input.addEventListener('change', function () {
-                    const BurgerId = input.getAttribute('data-url-redir');
-                    if (input.checked === true) {
-                        let datasToSend = {
-                            BurgerId,
-                            'Frites': 1,
-                        };
-                        console.log('click')
-                        console.log(BurgerId)
-                        console.log(datasToSend)
-                    } else {
-                        console.log('unclick')
-                    }
+            addToCartBTN.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const burgerId = btn.getAttribute('data-add-burger-cart');
+                    const isChecked = document.querySelector("[data-add-frie='"+burgerId+"']").checked;
+
+                    const data = {
+                        burgerId,
+                        'fries': isChecked
+                    };
+
+                    fetch('/addBurgerToCart/' + JSON.stringify(data))
+                        .then((response) => {
+                                console.log(response.json());
+                            }
+                        )
                 })
             })
         }
 
+        // J'AI ATTAQUE COMME CA MAIS C EST PLUS PROPRE AVEC FOREACH
         // if (checkbox) {
         //     for (let i = 0; i < checkbox.length; i++) {
         // //On selectionne l'Input

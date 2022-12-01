@@ -15,6 +15,28 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends AbstractController
 {
+    #[Route('/addBurgerToCart/{data}', name: 'app_fries_to_cart')]
+    public function addBurgerToCart(Request $request, SessionInterface $session) {
+
+        $DataDecoded = json_decode($request->get("data"), true);
+
+        dump($DataDecoded);
+
+        $panier = $session->get('panier', []);
+
+        if (!empty($panier['burger'][$DataDecoded['BurgerId']])) {
+            $panier['burger'][$DataDecoded['BurgerId']]++;
+            $panier['frie'][$DataDecoded['fries']]++;
+        } else {
+
+            $panier['burger'][$DataDecoded['BurgerId']] = 1;
+        }
+
+        $session->set('panier', $panier);
+
+    }
+
+
     #[Route('/panier', name: 'app_cart')]
     public function index(SessionInterface $session,
                           BurgerRepository $burgerRepository,
@@ -97,7 +119,7 @@ class CartController extends AbstractController
 //        if($request->query->get('frite')){
 //ce que m'a dit JULES
 //        }
-        $cartServices->addBurger($session, $id);
+        $cartServices->addBurgerToCart($session, $id);
 
         return $this->redirectToRoute('app_burger_index');
     }
