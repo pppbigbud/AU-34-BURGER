@@ -34,10 +34,15 @@
                     };
 
                     fetch('/addBurgerToCart/' + JSON.stringify(data))
-                        .then((response) => {
-                                console.log(response.json());
-                            }
-                        )
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then(qty => {
+                        const sideCardBurger = document.querySelector('.CartSideQuantity');
+                        console.log(sideCardBurger);
+                        console.log( qty.newQty);
+                        sideCardBurger.innerText = qty.newQty;
+                    })
                 })
             })
         }

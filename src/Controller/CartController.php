@@ -6,8 +6,11 @@ use App\Repository\DrinkRepository;
 use App\Repository\TacosRepository;
 use App\Services\CartService;
 use App\Repository\BurgerRepository;
+
 //use Flasher\Prime\Flasher;
+use phpDocumentor\Reflection\Types\Void_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -15,25 +18,47 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends AbstractController
 {
+    public static string $CART = 'panier';
+    public static string $ITEM_QTY = 'qty_panier';
+
     #[Route('/addBurgerToCart/{data}', name: 'app_fries_to_cart')]
-    public function addBurgerToCart(Request $request, SessionInterface $session) {
+    public function addBurgerToCart(
+        Request $request,
+        SessionInterface $session
+    ) : Response
+    {
 
         $DataDecoded = json_decode($request->get("data"), true);
+        $burgerId = $DataDecoded["burgerId"];
+        $fries = $DataDecoded["fries"];
 
-        dump($DataDecoded);
+        $session->remove(self::$CART);
+        $panier = $session->get(self::$CART, []);
 
-        $panier = $session->get('panier', []);
+        $nbFries = $fries ? 1 : 0;
 
-        if (!empty($panier['burger'][$DataDecoded['BurgerId']])) {
-            $panier['burger'][$DataDecoded['BurgerId']]++;
-            $panier['frie'][$DataDecoded['fries']]++;
+        // met à jour le panier en session
+        if (!isset($panier['burger'][$burgerId])) {
+            $panier['burger'][$burgerId] = [
+                'qty' => 1,
+                'nbFries' => $nbFries
+            ];
         } else {
-
-            $panier['burger'][$DataDecoded['BurgerId']] = 1;
+            $panier['burger'][$burgerId] = [
+                'qty' => $panier['burger'][$burgerId]['qty'] + 1,
+                'nbFries' => $panier['burger'][$burgerId]['nbFries'] + $nbFries
+            ];
         }
 
-        $session->set('panier', $panier);
+        $session->set(self::$CART, $panier);
 
+        $qty = 0;
+        foreach ($panier['burger'] as $item) {
+            $qty += $item['qty'];
+        }
+        $session->set(self::$ITEM_QTY, $qty);
+
+        return new JsonResponse(['newQty' => $qty]);
     }
 
 
@@ -43,6 +68,7 @@ class CartController extends AbstractController
                           TacosRepository  $tacosRepository,
                           DrinkRepository  $drinkRepository
     ): Response
+
     {
         $panierWithData = [];
         $panierWithData['tacos'] = [];
@@ -54,6 +80,10 @@ class CartController extends AbstractController
         $totalDrink = 0;
         $totalArticles = 0;
 
+        $test =  $session->get('panier', []);
+        dump($session);
+        dump($test);
+        dump($test['burger']);
 
 // ---------------------------SESSION CART BURGER et TACOS---------------------------------------------------
 
@@ -111,9 +141,10 @@ class CartController extends AbstractController
                 'totalArticles' => $totalArticles,
             ]);
         }
+
 //    ----------------------AJOUT et SUP BURGER--------------------------
 
-        #[Route('/panier/add/burger/{id}', name: 'cart_add_burger_id')]
+    #[Route('/panier/add/burger/{id}', name: 'cart_add_burger_id')]
     public function addBurger(Request $request, SessionInterface $session, CartService $cartServices, $id): Response
     {
 //        if($request->query->get('frite')){

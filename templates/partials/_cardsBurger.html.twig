@@ -3,8 +3,6 @@
         <img src="{{ asset( 'build/images/' ~ burger.img) }}" alt="nike-air-shoe">
     </div>
 
-    {#    {{ dump(form) }} #}
-
     <div class="contentBx">
 
         <h2>{{ burger.name }}</h2>
@@ -13,7 +11,9 @@
         <div class="prix">
             <p class="prixBurger">{{ burger.price }} €</p>
             {% if app.user != null %}
-                <input class="frites" data-add-frie ="{{ burger.id }}" type="checkbox" name="frites">
+                <label>
+                    <input class="frites" data-add-frie ="{{ burger.id }}" type="checkbox" name="frites">
+                </label>
                 <img class="btnFrite" src="{{ asset( 'build/images/fites2€.png') }}" alt="frites" >
 
             {% endif %}
