@@ -26,7 +26,7 @@
             addToCartBTN.forEach(btn => {
                 btn.addEventListener('click', function () {
                     const burgerId = btn.getAttribute('data-add-burger-cart');
-                    const isChecked = document.querySelector("[data-add-frie='"+burgerId+"']").checked;
+                    const isChecked = document.querySelector("[data-add-frie='" + burgerId + "']").checked;
 
                     const data = {
                         burgerId,
@@ -34,15 +34,24 @@
                     };
 
                     fetch('/addBurgerToCart/' + JSON.stringify(data))
-                    .then((response) => {
-                        return response.json();
-                    })
-                    .then(qty => {
-                        const sideCardBurger = document.querySelector('.CartSideQuantity');
-                        console.log(sideCardBurger);
-                        console.log( qty.newQty);
-                        sideCardBurger.innerText = qty.newQty;
-                    })
+                        .then((response) => {
+                            return response.json();
+                        })
+                        .then(qty => {
+                            let sideCardBurger = document.querySelector('.rondPriceBurger');
+
+                            let test = parseInt(qty.newQty);
+
+                            console.log(test)
+                            if (test < 0) {
+                                console.log('pouet')
+                                // sideCardBurger.style.visibility = "hidden"
+                            } else {
+                                // sideCardBurger.innerHtml = '<div class="notifPanierBurger">' + `<p>${qty.newQty}</p>` + '</div>';
+                                sideCardBurger.innerText = qty.newQty;
+                            }
+
+                        })
                 })
             })
         }

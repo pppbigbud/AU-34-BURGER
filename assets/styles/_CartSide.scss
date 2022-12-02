@@ -2,19 +2,19 @@
   width: 20%;
   height: auto;
   border-radius: 10px;
-  background-color: #a6a6a6 ;
+  background-color: #a6a6a6;
   //background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%);
   position: fixed;
   transform: translate(470%, 100%);
   z-index: 500;
-  box-shadow:5px 5px 60px -5px darken(#a6a6a6, 5%);
+  box-shadow: 5px 5px 60px -5px darken(#a6a6a6, 5%);
 
   .centrage {
     display: flex;
     justify-content: center;
     flex-direction: column;
 
-    .nameUserSideCart{
+    .nameUserSideCart {
       display: flex;
       text-align: center;
       justify-content: center;
@@ -23,7 +23,7 @@
       color: white;
     }
 
-    .connectUserSideCart{
+    .connectUserSideCart {
       display: flex;
       text-align: center;
       justify-content: center;
@@ -48,7 +48,8 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 20px; left: -30px;
+    top: 20px;
+    left: -30px;
     z-index: 600;
     width: 40px;
     height: 40px;
@@ -63,22 +64,35 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: -25px; left: -30px;
+    top: -25px;
+    left: -30px;
     z-index: 600;
     width: 40px;
     height: 40px;
+    //height: 100%;
+    //width: 100%;
     border-radius: 20px;
     background-color: green;
     font-size: xx-large;
     font-weight: bold;
   }
 
+  //.notifPanierBurger {
+  //  height: 100%;
+  //  width: 100%;
+  //  border-radius: 20px;
+  //  background-color: green;
+  //  font-size: xx-large;
+  //  font-weight: bold;
+  //}
+
   .rondPriceDrink {
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 65px; left: -30px;
+    top: 65px;
+    left: -30px;
     z-index: 600;
     width: 40px;
     height: 40px;
@@ -88,19 +102,22 @@
     font-weight: bold;
   }
 
-  .burgerSideCartImg{
+  .burgerSideCartImg {
     position: absolute;
-    top: -35px; left: -55px;
+    top: -35px;
+    left: -55px;
   }
 
-  .tacosSideCartImg{
+  .tacosSideCartImg {
     position: absolute;
-    top: 9px; left: -50px;
+    top: 9px;
+    left: -50px;
   }
 
-  .drinkSideCartImg{
+  .drinkSideCartImg {
     position: absolute;
-    top: 65px; left: -55px;
+    top: 65px;
+    left: -55px;
     transform: scaleX(-1);
   }
 

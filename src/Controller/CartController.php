@@ -6,9 +6,8 @@ use App\Repository\DrinkRepository;
 use App\Repository\TacosRepository;
 use App\Services\CartService;
 use App\Repository\BurgerRepository;
-
 //use Flasher\Prime\Flasher;
-use phpDocumentor\Reflection\Types\Void_;
+//use phpDocumentor\Reflection\Types\Void_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +31,7 @@ class CartController extends AbstractController
         $burgerId = $DataDecoded["burgerId"];
         $fries = $DataDecoded["fries"];
 
-        $session->remove(self::$CART);
+//        $session->remove(self::$CART);
         $panier = $session->get(self::$CART, []);
 
         $nbFries = $fries ? 1 : 0;
@@ -80,10 +79,10 @@ class CartController extends AbstractController
         $totalDrink = 0;
         $totalArticles = 0;
 
-        $test =  $session->get('panier', []);
-        dump($session);
-        dump($test);
-        dump($test['burger']);
+        $burgerId = 0;
+        if(!isset($panier['burger'][$burgerId]['qty'])){
+            $panier['burger'][$burgerId]['qty'] = 0;
+        }
 
 // ---------------------------SESSION CART BURGER et TACOS---------------------------------------------------
 
@@ -99,7 +98,7 @@ class CartController extends AbstractController
                         'quantity' => $quantity,
                     ];
 
-                    $totalBurger += $burger->getPrice() * $quantity;
+                    $totalBurger += $burger->getPrice() * $panier['burger'][$burgerId]['qty'];
                 }
 
             } else if ($typeProduits === 'tacos') {
@@ -129,6 +128,7 @@ class CartController extends AbstractController
         }
 
             return $this->render('cart/index.html.twig', [
+                'itemsQuantityBurger' => $panier['burger'][$burgerId]['qty'],
                 'itemsTotal' => $totalBurger + $totalTacos + $totalDrink,
                 'itemsBurger' => $panierWithData['burger'],
                 'itemsTacos' => $panierWithData['tacos'],
