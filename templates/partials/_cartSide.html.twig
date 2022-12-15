@@ -4,22 +4,21 @@
 
         {#- -------------------------------BURGER------------------------------------ -#}
 
-            <div class="rondPriceBurger">
+{#            <div class="rondPriceBurger">#}
 
-            </div>
+{#            </div>#}
 
-
-        {#        {% if totalBurgerSideCart > 0 %} #}
-        {#            <div class="rondPriceBurger"> #}
-        {#                    {{ totalBurgerSideCart }} #}
-        {#            </div> #}
-        {#            <div class="burgerSideCartImg"> #}
-        {#                <img src="{{ asset( 'build/images/burgerPanier.png') }}" #}
-        {#                     alt="" #}
-        {#                     style="width: 45px; height: 45px" #}
-        {#                     class="rounded-circle"/> #}
-        {#            </div> #}
-        {#        {% endif %} #}
+                {% if totalBurgerSideCart > 0 %}
+                    <div class="rondPriceBurger">
+                            {{ totalBurgerSideCart }}
+                    </div>
+                    <div class="burgerSideCartImg">
+                        <img src="{{ asset( 'build/images/burgerPanier.png') }}"
+                             alt=""
+                             style="width: 45px; height: 45px"
+                             class="rounded-circle"/>
+                    </div>
+                {% endif %}
 
         {#- -------------------------------TACOS------------------------------------ -#}
 

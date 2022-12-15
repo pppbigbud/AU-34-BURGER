@@ -18,9 +18,10 @@
                         <th>Description</th>
                         <th>Prix</th>
                         <th>Quantité</th>
+                        <th>Frites</th>
                         <th>
                             <div class="d-flex justify-content-center align-content-center">
-                            Supprimer
+                                Supprimer
                             </div>
                         </th>
 
@@ -46,10 +47,8 @@
                             <p class="fw-normal mb-1">{{ item.burger.description }}</p>
                         </td>
                         <td>{{ item.burger.price }} €</td>
-
-                        {% if itemsQuantityBurger %}
-                        <td>{{ itemsQuantityBurger }}</td>
-                        {% endif %}
+                        <td>{{ item.quantity.qty}}</td>
+                        <td>{{ item.quantity.nbFries}}</td>
 
                         <td>
                             <div class="d-flex justify-content-center align-content-center">
@@ -132,10 +131,10 @@
                             <td>{{ (item.tacos.size.price) + (item.tacos.meat.price) }} €</td>
                             <td>
                                 <div class="d-flex justify-content-center align-content-center">
-                                <a href="{{ path('cart_remove_tacos', {'id': item.tacos.id}) }}">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
-                            </div>
+                                    <a href="{{ path('cart_remove_tacos', {'id': item.tacos.id}) }}">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                         </tbody>
@@ -210,9 +209,9 @@
 
         {% endif %}
 
-        <script>
-            console.log(sessionStorage.getItem("Burger"));
-        </script>
+{#        <script>#}
+{#            console.log(sessionStorage.getItem("Burger"));#}
+{#        </script>#}
 
     {% endblock %}
 

@@ -41,25 +41,25 @@ class BurgerController extends AbstractController
         ]);
     }
 
-    #[isGranted("ROLE_ADMIN")]
-    #[Route('/new', name: 'app_burger_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, BurgerRepository $burgerRepository): Response
-    {
-        $burger = new Burger();
-        $form = $this->createForm(BurgerType::class, $burger);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $burgerRepository->save($burger, true);
-
-            return $this->redirectToRoute('app_burger_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('burger/new.html.twig', [
-            'burger' => $burger,
+//    #[isGranted("ROLE_ADMIN")]
+//    #[Route('/new', name: 'app_burger_new', methods: ['GET', 'POST'])]
+//    public function new(Request $request, BurgerRepository $burgerRepository): Response
+//    {
+//        $burger = new Burger();
+//        $form = $this->createForm(BurgerType::class, $burger);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $burgerRepository->save($burger, true);
+//
+//            return $this->redirectToRoute('app_burger_index', [], Response::HTTP_SEE_OTHER);
+//        }
+//
+//        return $this->renderForm('burger/new.html.twig', [
+//            'burger' => $burger,
 //            'form' => $form,
-        ]);
-    }
+//        ]);
+//    }
 
 
     #[Route('/{id}', name: 'app_burger_show', methods: ['GET'])]
