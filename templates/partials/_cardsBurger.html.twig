@@ -1,6 +1,6 @@
 <div class="card m-2">
     <div class="imgBx">
-        <img src="{{ asset( 'build/images/') ~ burger.imagePath }}" alt="nike-air-shoe">
+        <img src="{{ asset( 'build/images/') ~ burger.imagePath }}" alt="burger">
     </div>
 
     <div class="contentBx">
@@ -32,7 +32,8 @@
 
         {% endif %}
         {% if is_granted("ROLE_ADMIN") %}
-            <a class="btnModifierCart" href="{{ path('app_burger_new', {'id': burger.id}) }}">Modifier</a>
+            <a class="btnModifierCart" href="{{ path('app_burger_new', {'id': burger.id}) }}">Nouveau</a>
+            <a class="btnModifierCart" href="{{ path('app_burger_edit', {'id': burger.id}) }}">Modifier/Supprimer</a>
         {% endif %}
     </div>
 

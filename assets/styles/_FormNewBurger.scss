@@ -31,6 +31,18 @@
   }
 }
 
-#burger_Description{
+.btnSupContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .btnSup {
+    background-color: yellow;
+  }
+}
+
+#burger_Description {
   height: 10vh;
 }

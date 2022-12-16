@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Burger;
 use App\Form\BurgerType;
+use App\Repository\BurgerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+#[isGranted("ROLE_ADMIN")]
 class BurgerAdminController extends AbstractController
 {
     public function __construct(
@@ -22,7 +24,6 @@ class BurgerAdminController extends AbstractController
     {
     }
 
-    #[isGranted("ROLE_ADMIN")]
     #[Route('admin/burger/new', name: 'app_burger_new', methods: ['GET', 'POST'])]
     public function new(Request $request, SluggerInterface $slugger): Response
     {
@@ -35,7 +36,7 @@ class BurgerAdminController extends AbstractController
 
         if ($burgerImgFile) {
             //exemple de nom de fichier : chat.jpg
-            //recupére le nom du fichier sans l'extension => chat
+            //require le nom du fichier sans l'extension => chat
             $originalFilename = pathinfo($burgerImgFile->getClientOriginalName(), PATHINFO_FILENAME);
 
             //Slug l'originalName, exemple: chat noir -> chat-noir
@@ -58,9 +59,37 @@ class BurgerAdminController extends AbstractController
             }
         }
 
-        return $this->renderForm('admin/new.html.twig', [
+        return $this->renderForm('admin/burger/new.html.twig', [
             'form' => $form,
         ]);
     }
 
+
+    #[Route('/{id}/edit', name: 'app_burger_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Burger $burger, BurgerRepository $burgerRepository): Response
+    {
+        $form = $this->createForm(BurgerType::class, $burger);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $burgerRepository->save($burger, true);
+
+            return $this->redirectToRoute('app_burger_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('admin/burger/edit.html.twig', [
+            'burger' => $burger,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}', name: 'app_burger_delete', methods: ['POST'])]
+    public function delete(Request $request, Burger $burger, BurgerRepository $burgerRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$burger->getId(), $request->request->get('_token'))) {
+            $burgerRepository->remove($burger, true);
+        }
+
+        return $this->redirectToRoute('app_burger_index', [], Response::HTTP_SEE_OTHER);
+    }
 }

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Burger{% endblock %}
+
+{% block main %}
+    <h1>Modifier Supprimer un Burger</h1>
+
+    {{ include('admin/burger/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <div class="btnSup">
+        {{ include('admin/burger/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

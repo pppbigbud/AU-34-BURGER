@@ -62,41 +62,41 @@ class BurgerController extends AbstractController
 //    }
 
 
-    #[Route('/{id}', name: 'app_burger_show', methods: ['GET'])]
-    public function show(Burger $burger): Response
-    {
-        return $this->render('burger/show.html.twig', [
-            'burger' => $burger,
-        ]);
-    }
+//    #[Route('/{id}', name: 'app_burger_show', methods: ['GET'])]
+//    public function show(Burger $burger): Response
+//    {
+//        return $this->render('burger/show.html.twig', [
+//            'burger' => $burger,
+//        ]);
+//    }
 
-#[isGranted("ROLE_ADMIN")]
-    #[Route('/{id}/edit', name: 'app_burger_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Burger $burger, BurgerRepository $burgerRepository): Response
-    {
-        $form = $this->createForm(BurgerType::class, $burger);
-        $form->handleRequest($request);
+//#[isGranted("ROLE_ADMIN")]
+//    #[Route('/{id}/edit', name: 'app_burger_edit', methods: ['GET', 'POST'])]
+//    public function edit(Request $request, Burger $burger, BurgerRepository $burgerRepository): Response
+//    {
+//        $form = $this->createForm(BurgerType::class, $burger);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $burgerRepository->save($burger, true);
+//
+//            return $this->redirectToRoute('app_burger_index', [], Response::HTTP_SEE_OTHER);
+//        }
+//
+//        return $this->renderForm('burger/edit.html.twig', [
+//            'burger' => $burger,
+////            'form' => $form,
+//        ]);
+//    }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $burgerRepository->save($burger, true);
 
-            return $this->redirectToRoute('app_burger_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('burger/edit.html.twig', [
-            'burger' => $burger,
-//            'form' => $form,
-        ]);
-    }
-
-
-    #[Route('/{id}', name: 'app_burger_delete', methods: ['POST'])]
-    public function delete(Request $request, Burger $burger, BurgerRepository $burgerRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$burger->getId(), $request->request->get('_token'))) {
-            $burgerRepository->remove($burger, true);
-        }
-
-        return $this->redirectToRoute('app_burger_index', [], Response::HTTP_SEE_OTHER);
-    }
+//    #[Route('/{id}', name: 'app_burger_delete', methods: ['POST'])]
+//    public function delete(Request $request, Burger $burger, BurgerRepository $burgerRepository): Response
+//    {
+//        if ($this->isCsrfTokenValid('delete'.$burger->getId(), $request->request->get('_token'))) {
+//            $burgerRepository->remove($burger, true);
+//        }
+//
+//        return $this->redirectToRoute('app_burger_index', [], Response::HTTP_SEE_OTHER);
+//    }
 }
