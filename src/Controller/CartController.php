@@ -155,7 +155,7 @@ class CartController extends AbstractController
 //    ----------------------AJOUT et SUP BURGER--------------------------
 
     #[Route('/panier/add/burger/{id}', name: 'cart_add_burger_id')]
-    public function addBurger(Request $request, SessionInterface $session, CartService $cartServices, $id): Response
+    public function addBurger(SessionInterface $session, CartService $cartServices, $id): Response
     {
 
         $cartServices->addBurgerToCart($session, $id);

@@ -1,0 +1,24 @@
+<div class="containerNewDrinkForm">
+    <div class="fondFormDrinkNew">
+        {{ form_start(formSize) }}
+        <button class="btnDrinkNew btnFormValid">{{ button_label|default('Enregistrer une nouvelle Size') }}</button>
+        {{ form_end(formSize) }}
+
+        {{ form_start(formMeat) }}
+        <button class="btnDrinkNew btnFormValid">{{ button_label|default('Enregistrer une nouvelle Meat') }}</button>
+        {{ form_end(formMeat) }}
+
+        {{ form_start(formSauce) }}
+        <button class="btnDrinkNew btnFormValid">{{ button_label|default('Enregistrer une nouvelle Sauce') }}</button>
+        {{ form_end(formSauce) }}
+
+        {{ form_start(formCheese) }}
+        <button class="btnDrinkNew btnFormValid">{{ button_label|default('Enregistrer une nouvelle Cheese') }}</button>
+        {{ form_end(formCheese) }}
+
+
+        <button class="btnDrinkNew btnFormAnnul"><a href="{{ path('app_tacos_index') }}">Annuler / Retour à la
+                liste</a></button>
+
+    </div>
+</div>

@@ -33,7 +33,7 @@ class TacosType extends AbstractType
                 ],
                 'choice_label' => 'name',
                 'multiple' => false,
-//                'expanded'=> true,
+
             ])
             ->add('meat', EntityType::class, [
                 'class' => Meat::class,

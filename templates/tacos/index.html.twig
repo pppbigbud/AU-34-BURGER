@@ -48,6 +48,11 @@
                 </container>
             {% endif %}
 
+            {% if is_granted("ROLE_ADMIN") %}
+                <a class="btnModifierCart" href="{{ path('app_tacos_new') }}">Nouveaux Ingrédients</a>
+{#                <a class="btnModifierCart" href="{{ path('app_tacos_index') }}">Modifier/Supprimer</a>#}
+            {% endif %}
+
             {{ form_end(form) }}
 
         </div>
