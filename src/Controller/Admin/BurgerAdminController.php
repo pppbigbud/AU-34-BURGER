@@ -4,7 +4,6 @@ namespace App\Controller\Admin;
 
 use App\Entity\Burger;
 use App\Form\BurgerType;
-use App\Repository\BurgerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,12 +31,6 @@ class BurgerAdminController extends AbstractController
         $form = $this->createForm(BurgerType::class, $burger);
         $form->handleRequest($request);
 
-//        if ($form->isSubmitted() && $form->isValid()) {
-////            $burgerRepository->save($burger, true);
-////
-////            return $this->redirectToRoute('app_burger_index', [], Response::HTTP_SEE_OTHER);
-//        }
-
         $burgerImgFile = $form->get('imageFile')->getData();
 
         if ($burgerImgFile) {
@@ -63,11 +56,11 @@ class BurgerAdminController extends AbstractController
             } catch (\Exception $e) {
 
             }
-
         }
 
         return $this->renderForm('admin/new.html.twig', [
             'form' => $form,
         ]);
     }
+
 }

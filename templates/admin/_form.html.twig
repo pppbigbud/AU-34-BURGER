@@ -1,4 +1,37 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Enregistrer nouveau Burger') }}</button>
-{{ form_end(form) }}
+<div class="containerNewBurgerForm">
+    <div class="fondFormBurgerNew">
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col burgerFormNew">
+                {{ form_label(form.Name) }}
+                {{ form_widget(form.Name) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col burgerFormNew">
+                {{ form_label(form.Description) }}
+                {{ form_widget(form.Description) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col burgerFormNew">
+                {{ form_label(form.Price) }}
+                {{ form_widget(form.Price) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col burgerFormNew">
+                {{ form_label(form.imageFile) }}
+                {{ form_widget(form.imageFile) }}
+            </div>
+        </div>
+
+        <button class="btnBurgerNew btnFormValid">{{ button_label|default('Enregistrer nouveau Burger') }}</button>
+        <button class="btnBurgerNew btnFormAnnul"><a href="{{ path('app_burger_index') }}">Annuler / Retour à la
+                liste</a></button>
+        {{ form_end(form) }}
+    </div>
+</div>

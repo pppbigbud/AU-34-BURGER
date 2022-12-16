@@ -12,24 +12,27 @@
             <p class="prixBurger">{{ burger.price }} €</p>
             {% if app.user != null %}
                 <label>
-                    <input class="frites" data-add-frie ="{{ burger.id }}" type="checkbox" name="frites">
+                    <input class="frites" data-add-frie="{{ burger.id }}" type="checkbox" name="frites">
                 </label>
-                <img class="btnFrite" src="{{ asset( 'build/images/fites2€.png') }}" alt="frites" >
+                <img class="btnFrite" src="{{ asset( 'build/images/fites2€.png') }}" alt="frites">
 
             {% endif %}
         </div>
 
-        {% if app.user != null %}
-            <a class="btnAjoutCart" data-add-burger-cart ="{{ burger.id }}">
-                <i class="fa-solid fa-cart-plus"></i> Ajouter au Panier</a>
-
-            {#        {% elseif is_granted("ROLE_ADMIN") %} #}
-            <a class="btnModifierCart" href="{{ path('app_burger_edit', {'id': burger.id}) }}">Modifier</a>
-
-        {% else %}
+        {% if app.user == null %}
             <a class="btnAjoutCart m-2" href="{{ path('app_register') }}"><i class="fa-solid fa-person-chalkboard"></i>
                 Créer un compte</a>
             <a class="btnAjoutCart m-2" href="{{ path('app_login') }}"><i class="fa-solid fa-key"></i> Se connecter</a>
+
+        {% endif %}
+
+        {% if app.user != null %}
+            <a class="btnAjoutCart" data-add-burger-cart="{{ burger.id }}">
+                <i class="fa-solid fa-cart-plus"></i> Ajouter au Panier</a>
+
+        {% endif %}
+        {% if is_granted("ROLE_ADMIN") %}
+            <a class="btnModifierCart" href="{{ path('app_burger_new', {'id': burger.id}) }}">Modifier</a>
         {% endif %}
     </div>
 

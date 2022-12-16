@@ -1,0 +1,36 @@
+.containerNewBurgerForm {
+  display: flex;
+  justify-content: center;
+  //background-color: yellow;
+
+  .fondFormBurgerNew {
+    width: 30%;
+    background-color: #009955;
+    padding: 2vw;
+    border-radius: 10px;
+
+    .btnBurgerNew {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      border: none;
+      text-decoration: none;
+    }
+
+    .btnFormValid {
+      background-color: green;
+    }
+
+    .btnFormAnnul {
+      background-color: red;
+    }
+
+    .burgerFormNew, .btnBurgerNew {
+      margin-top: 2vh;
+    }
+  }
+}
+
+#burger_Description{
+  height: 10vh;
+}
