@@ -28,6 +28,9 @@ class Drink
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $imagePath = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +92,19 @@ class Drink
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getImagePath(): ?string
+    {
+        return $this->imagePath;
+    }
+
+
+    public function setImagePath(string $imagePath): self
+    {
+        $this->imagePath = $imagePath;
 
         return $this;
     }

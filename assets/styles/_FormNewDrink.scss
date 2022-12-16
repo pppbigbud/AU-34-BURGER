@@ -1,0 +1,48 @@
+.containerNewDrinkForm {
+  display: flex;
+  justify-content: center;
+  //background-color: yellow;
+
+  .fondFormDrinkNew {
+    width: 30%;
+    background-color: #bf23ff;
+    padding: 2vw;
+    border-radius: 10px;
+
+    .btnDrinkNew {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      border: none;
+      text-decoration: none;
+    }
+
+    .btnFormValid {
+      background-color: #ff7300;
+    }
+
+    .btnFormAnnul {
+      background-color: #2f86d2;
+    }
+
+    .burgerFormNew, .btnDrinkNew {
+      margin-top: 2vh;
+    }
+  }
+}
+
+.btnSupContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .btnSup {
+    background-color: yellow;
+  }
+}
+
+#drink_Description {
+  height: 10vh;
+}

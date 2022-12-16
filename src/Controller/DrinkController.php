@@ -25,58 +25,58 @@ class DrinkController extends AbstractController
         }
     }
 
-    #[Route('/new', name: 'app_drink_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, DrinkRepository $drinkRepository): Response
-    {
-        $drink = new Drink();
-        $form = $this->createForm(DrinkType::class, $drink);
-        $form->handleRequest($request);
+//    #[Route('/new', name: 'app_drink_new', methods: ['GET', 'POST'])]
+//    public function new(Request $request, DrinkRepository $drinkRepository): Response
+//    {
+//        $drink = new Drink();
+//        $form = $this->createForm(DrinkType::class, $drink);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $drinkRepository->save($drink, true);
+//
+//            return $this->redirectToRoute('app_drink_index', [], Response::HTTP_SEE_OTHER);
+//        }
+//
+//        return $this->renderForm('drink/new.html.twig', [
+//            'drink' => $drink,
+////            'form' => $form,
+//        ]);
+//    }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $drinkRepository->save($drink, true);
+//    #[Route('/{id}', name: 'app_drink_show', methods: ['GET'])]
+//    public function show(Drink $drink): Response
+//    {
+//        return $this->render('drink/show.html.twig', [
+//            'drink' => $drink,
+//        ]);
+//    }
 
-            return $this->redirectToRoute('app_drink_index', [], Response::HTTP_SEE_OTHER);
-        }
+//    #[Route('/{id}/edit', name: 'app_drink_edit', methods: ['GET', 'POST'])]
+//    public function edit(Request $request, Drink $drink, DrinkRepository $drinkRepository): Response
+//    {
+//        $form = $this->createForm(DrinkType::class, $drink);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $drinkRepository->save($drink, true);
+//
+//            return $this->redirectToRoute('app_drink_index', [], Response::HTTP_SEE_OTHER);
+//        }
+//
+//        return $this->renderForm('admin/drink/edit.html.twig', [
+//            'drink' => $drink,
+////            'form' => $form,
+//        ]);
+//    }
 
-        return $this->renderForm('drink/new.html.twig', [
-            'drink' => $drink,
-//            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_drink_show', methods: ['GET'])]
-    public function show(Drink $drink): Response
-    {
-        return $this->render('drink/show.html.twig', [
-            'drink' => $drink,
-        ]);
-    }
-
-    #[Route('/{id}/edit', name: 'app_drink_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Drink $drink, DrinkRepository $drinkRepository): Response
-    {
-        $form = $this->createForm(DrinkType::class, $drink);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $drinkRepository->save($drink, true);
-
-            return $this->redirectToRoute('app_drink_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('drink/edit.html.twig', [
-            'drink' => $drink,
-//            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_drink_delete', methods: ['POST'])]
-    public function delete(Request $request, Drink $drink, DrinkRepository $drinkRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete' . $drink->getId(), $request->request->get('_token'))) {
-            $drinkRepository->remove($drink, true);
-        }
-
-        return $this->redirectToRoute('app_drink_index', [], Response::HTTP_SEE_OTHER);
-    }
+//    #[Route('/{id}', name: 'app_drink_delete', methods: ['POST'])]
+//    public function delete(Request $request, Drink $drink, DrinkRepository $drinkRepository): Response
+//    {
+//        if ($this->isCsrfTokenValid('delete' . $drink->getId(), $request->request->get('_token'))) {
+//            $drinkRepository->remove($drink, true);
+//        }
+//
+//        return $this->redirectToRoute('app_drink_index', [], Response::HTTP_SEE_OTHER);
+//    }
 }

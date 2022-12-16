@@ -1,6 +1,6 @@
 <div class="card m-2">
     <div class="imgBx">
-        <img src="{{ asset( 'build/images/' ~ drink.img) }}" alt="nike-air-shoe">
+        <img src="{{ asset( 'build/images/drink/') ~ drink.imagePath }}" alt="nike-air-shoe">
     </div>
 
     <div class="contentBx">
@@ -12,16 +12,38 @@
             <p class="prixBurger">{{ drink.price }} €</p>
         </div>
 
-        {% if app.user != null %}
-            <a class="btnAjoutCart" href="{{ path('cart_add_drink_id', { 'id': drink.id}) }}"><i class="fa-solid fa-cart-plus"></i> Ajouter au Panier</a>
-{#TODO Demander a Allan pourquoi l'authentification ne fonctionne pas #}
-{#        {% elseif is_granted("ROLE_ADMIN") %}#}
-{#            <a class="btnModifierCart" href="{{ path('app_drink_edit', {'id': drink.id}) }}">Modifier</a>#}
 
-        {% else %}
-            <a class="btnAjoutCart m-2" href="{{ path('app_register') }}"><i class="fa-solid fa-person-chalkboard"></i> Créer un compte</a>
+        {% if app.user == null %}
+            <a class="btnAjoutCart m-2" href="{{ path('app_register') }}"><i class="fa-solid fa-person-chalkboard"></i>
+                Créer un compte</a>
             <a class="btnAjoutCart m-2" href="{{ path('app_login') }}"><i class="fa-solid fa-key"></i> Se connecter</a>
+
         {% endif %}
+
+        {% if app.user != null %}
+            <a class="btnAjoutCart" href="{{ path('cart_add_drink_id', { 'id': drink.id}) }}">
+                <i class="fa-solid fa-cart-plus"></i> Ajouter au Panier</a>
+
+{#            <a class="btnAjoutCart" data-add-burger-cart="{{ burger.id }}">#}
+{#                <i class="fa-solid fa-cart-plus"></i> Ajouter au Panier</a>#}
+
+        {% endif %}
+
+        {% if is_granted("ROLE_ADMIN") %}
+            <a class="btnModifierCart" href="{{ path('app_drink_new', {'id': drink.id}) }}">Nouveau</a>
+            <a class="btnModifierCart" href="{{ path('app_drink_edit', {'id': drink.id}) }}">Modifier/Supprimer</a>
+        {% endif %}
+
+
+
+
+
+
+
+
+
+
+
     </div>
 
 </div>
