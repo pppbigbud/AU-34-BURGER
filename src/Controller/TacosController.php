@@ -6,6 +6,7 @@ use App\Entity\Tacos;
 use App\Form\TacosType;
 use App\Repository\TacosRepository;
 use App\Services\CartService;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,7 @@ class TacosController extends AbstractController
 {
 
     #[Route('/tacos', name: 'app_tacos_index')]
+//    #[ParamConverter('post', class: 'Tacos')]
     public function index(Request          $request,
                           SessionInterface $session,
                           TacosRepository  $tacosRepository,

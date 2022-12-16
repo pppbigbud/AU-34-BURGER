@@ -2,9 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Burger;
 use App\Entity\Drink;
-use App\Form\BurgerType;
 use App\Form\DrinkType;
 use App\Repository\DrinkRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -66,7 +64,7 @@ class DrinkAdminController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_drink_edit', methods: ['GET', 'POST'])]
+    #[Route('admin/{id}/edit', name: 'app_drink_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Drink $drink, DrinkRepository $drinkRepository): Response
     {
         $form = $this->createForm(DrinkType::class, $drink);
@@ -84,7 +82,7 @@ class DrinkAdminController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_drink_delete', methods: ['POST'])]
+    #[Route('admin/{id}', name: 'app_drink_delete', methods: ['POST'])]
     public function delete(Request $request, Drink $drink, DrinkRepository $drinkRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $drink->getId(), $request->request->get('_token'))) {

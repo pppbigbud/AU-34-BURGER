@@ -32,8 +32,6 @@ class BurgerType extends AbstractType
             ->add('imageFile', FileType::class, [
                 'mapped' => false
             ]);
-
-
     }
 
     public function configureOptions(OptionsResolver $resolver): void
