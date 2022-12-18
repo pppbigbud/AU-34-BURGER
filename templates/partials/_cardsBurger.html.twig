@@ -27,7 +27,7 @@
         {% endif %}
 
         {% if app.user != null %}
-            <a class="btnAjoutCart" data-add-burger-cart="{{ burger.id }}">
+            <a class="btnAjoutCart" data-add-burger-cart="{{ burger.id }}" data-duration="{{ burger.durationS }}">
                 <i class="fa-solid fa-cart-plus"></i> Ajouter au Panier</a>
 
         {% endif %}

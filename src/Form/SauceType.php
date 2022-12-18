@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Sauce;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,6 +16,11 @@ class SauceType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Sauce'
+            ])
+            ->add('submit', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-primary mt-4'
+                ],
             ]);
 
     }

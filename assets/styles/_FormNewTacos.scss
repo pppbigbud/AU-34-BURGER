@@ -1,0 +1,82 @@
+.containerAdminTacos {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  .rowAdminTacos {
+    width: 20%;
+    height: auto;
+    padding: 50px;
+
+    .fondFormTacosSize {
+      padding: 50px;
+      background-color: yellow;
+      border-radius: 5%;
+
+      .imgFormSize {
+        width: 50%;
+        height: auto;
+      }
+    }
+
+    .fondFormTacosMeat {
+      padding: 50px;
+      background-color: blue;
+      border-radius: 5%;
+
+      .imgFormMeat {
+        width: 50%;
+        height: auto;
+      }
+    }
+
+    .fondFormTacosSauce {
+      padding: 50px;
+      background-color: orange;
+      border-radius: 5%;
+
+      .imgFormSauce {
+        width: 50%;
+        height: auto;
+      }
+    }
+
+    .fondFormTacosCheese {
+      padding: 50px;
+      background-color: green;
+      border-radius: 5%;
+
+      .imgFormCheese {
+        width: 50%;
+        height: auto;
+      }
+    }
+  }
+}
+
+.alignFormImg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    font-size: 2em;
+  }
+}
+
+
+@media (orientation: portrait) {
+  .containerAdminTacos {
+    flex-direction: column;
+    align-items: center;
+
+    .rowAdminTacos {
+      width: 70%;
+      height: auto;
+
+    }
+  }
+}

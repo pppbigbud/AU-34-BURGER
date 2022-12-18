@@ -27,30 +27,36 @@ class TacosAdminController extends AbstractController
         $size = new Size();
         $formSize = $this->createForm(SizeType::class, $size);
         $formSize->handleRequest($request);
-
-        $entityManager->persist($size);
-        $entityManager->flush();
+        if ($formSize->isSubmitted() && $formSize->isValid()) {
+            $entityManager->persist($size);
+            $entityManager->flush();
+        }
 
         $meat = new Meat();
         $formMeat = $this->createForm(MeatType::class, $meat);
         $formMeat->handleRequest($request);
+        if ($formMeat->isSubmitted() && $formMeat->isValid()) {
+            $entityManager->persist($meat);
+            $entityManager->flush();
+        }
 
-        $entityManager->persist($meat);
-        $entityManager->flush();
 
         $sauce = new Sauce();
         $formSauce = $this->createForm(SauceType::class, $sauce);
         $formSauce->handleRequest($request);
+        if ($formSauce->isSubmitted() && $formSauce->isValid()) {
+            $entityManager->persist($sauce);
+            $entityManager->flush();
+        }
 
-        $entityManager->persist($sauce);
-        $entityManager->flush();
 
         $cheese = new Cheese();
         $formCheese = $this->createForm(CheeseType::class, $cheese);
         $formCheese->handleRequest($request);
-
-        $entityManager->persist($cheese);
-        $entityManager->flush();
+        if ($formCheese->isSubmitted() && $formCheese->isValid()) {
+            $entityManager->persist($cheese);
+            $entityManager->flush();
+        }
 
         return $this->renderForm('admin/tacos/new.html.twig', [
             'formSize' => $formSize,

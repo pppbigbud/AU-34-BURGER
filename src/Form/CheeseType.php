@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Cheese;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,6 +16,12 @@ class CheeseType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Fromage'
+            ])
+            ->add('submit', SubmitType::class, [
+                'attr' => [
+                    'label' => 'test',
+                    'class' => 'btn btn-primary mt-4'
+                ],
             ]);
 
     }

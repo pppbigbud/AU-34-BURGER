@@ -1,24 +1,97 @@
-<div class="containerNewDrinkForm">
-    <div class="fondFormDrinkNew">
-        {{ form_start(formSize) }}
-        <button class="btnDrinkNew btnFormValid">{{ button_label|default('Enregistrer une nouvelle Size') }}</button>
-        {{ form_end(formSize) }}
+<div class="containerAdminTacos ">
 
-        {{ form_start(formMeat) }}
-        <button class="btnDrinkNew btnFormValid">{{ button_label|default('Enregistrer une nouvelle Meat') }}</button>
-        {{ form_end(formMeat) }}
+    <div class="rowAdminTacos">
+        <div class="fondFormTacosSize">
 
-        {{ form_start(formSauce) }}
-        <button class="btnDrinkNew btnFormValid">{{ button_label|default('Enregistrer une nouvelle Sauce') }}</button>
-        {{ form_end(formSauce) }}
+            <div class="alignFormImg">
+                <img src="{{ asset('build/images/tacosSize.png') }}" alt="tacos" class="imgFormSize">
+                <p>TAILLE</p>
+            </div>
 
-        {{ form_start(formCheese) }}
-        <button class="btnDrinkNew btnFormValid">{{ button_label|default('Enregistrer une nouvelle Cheese') }}</button>
-        {{ form_end(formCheese) }}
+            {{ form_start(formSize) }}
 
+            {{ form_errors(formSize.name) }}
+            {{ form_label(formSize.name) }}
+            {{ form_widget(formSize.name) }}
 
-        <button class="btnDrinkNew btnFormAnnul"><a href="{{ path('app_tacos_index') }}">Annuler / Retour à la
-                liste</a></button>
+            {{ form_errors(formSize.price) }}
+            {{ form_label(formSize.price) }}
+            {{ form_widget(formSize.price) }}
 
+            {{ form_row(formSize.submit, { 'label': 'Ajouter' }) }}
+
+            {{ form_end(formSize) }}
+
+        </div>
     </div>
+
+    <div class="rowAdminTacos">
+        <div class="fondFormTacosMeat">
+
+            <div class="alignFormImg">
+                <img src="{{ asset('build/images/tacosMeat.png') }}" alt="tacos" class="imgFormMeat">
+                <p>VIANDE</p>
+            </div>
+
+            {{ form_start(formMeat) }}
+
+            {{ form_errors(formMeat.name) }}
+            {{ form_label(formMeat.name) }}
+            {{ form_widget(formMeat.name) }}
+
+            {{ form_errors(formMeat.price) }}
+            {{ form_label(formMeat.price) }}
+            {{ form_widget(formMeat.price) }}
+
+            {{ form_row(formMeat.submit, { 'label': 'Ajouter' }) }}
+
+            {{ form_end(formMeat) }}
+
+        </div>
+    </div>
+
+    <div class="rowAdminTacos">
+        <div class="fondFormTacosSauce">
+
+            <div class="alignFormImg">
+                <img src="{{ asset('build/images/sauceTacos.png') }}" alt="tacos" class="imgFormSauce">
+                <p>SAUCE</p>
+            </div>
+
+            {{ form_start(formSauce) }}
+
+            {{ form_errors(formSauce.name) }}
+            {{ form_label(formSauce.name) }}
+            {{ form_widget(formSauce.name) }}
+
+            {{ form_row(formSauce.submit, { 'label': 'Ajouter' }) }}
+
+            {{ form_end(formSauce) }}
+
+        </div>
+    </div>
+
+    <div class="rowAdminTacos">
+        <div class="fondFormTacosCheese">
+
+            <div class="alignFormImg">
+                <img src="{{ asset('build/images/cheeseTacosConfig.png') }}" alt="tacos" class="imgFormCheese">
+                <p>FROMAGES</p>
+            </div>
+
+            {{ form_start(formCheese) }}
+
+            {{ form_errors(formCheese.name) }}
+            {{ form_label(formCheese.name) }}
+            {{ form_widget(formCheese.name) }}
+
+            {{ form_row(formCheese.submit, { 'label': 'Ajouter' }) }}
+
+            {{ form_end(formCheese) }}
+
+        </div>
+    </div>
+
+
 </div>
+

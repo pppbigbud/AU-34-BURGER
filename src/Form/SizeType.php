@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Size;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,6 +20,11 @@ class SizeType extends AbstractType
             ])
             ->add('price', NumberType::class, [
                 'label' => 'Prix de la nouvelle taille'
+            ])
+            ->add('submit', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-primary mt-4'
+                ],
             ]);
 
     }

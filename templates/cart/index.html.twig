@@ -33,7 +33,7 @@
                     <tr>
                         <td>
                             <div class="d-flex align-items-center">
-                                <img src="{{ asset( 'build/images/' ~ item.burger.img) }}"
+                                <img src="{{ asset( 'build/images/burger/') ~ item.burger.imagePath  }}"
                                      alt=""
                                      style="width: 45px; height: 45px"
                                      class="rounded-circle"
@@ -209,9 +209,9 @@
 
         {% endif %}
 
-{#        <script>#}
-{#            console.log(sessionStorage.getItem("Burger"));#}
-{#        </script>#}
+        <script>
+            console.log(sessionStorage.getItem("Burger"));
+        </script>
 
     {% endblock %}
 

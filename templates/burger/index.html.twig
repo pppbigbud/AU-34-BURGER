@@ -25,33 +25,35 @@
             //Boucle sur le tableau data-attribute
             addToCartBTN.forEach(btn => {
                 btn.addEventListener('click', function () {
+                    const burgerDuration = btn.getAttribute('data-duration');
                     const burgerId = btn.getAttribute('data-add-burger-cart');
                     const isChecked = document.querySelector("[data-add-frie='" + burgerId + "']").checked;
 
                     const data = {
                         burgerId,
-                        'fries': isChecked
+                        'fries': isChecked,
+                        burgerDuration
                     };
 
                     fetch('/addBurgerToCart/' + JSON.stringify(data))
                         .then((response) => {
                             return response.json();
                         })
-                        .then(qty => {
-                            let sideCardBurger = document.querySelector('.rondPriceBurger');
-
-                            let test = parseInt(qty.newQty);
-
-                            // console.log(test)
-                            // if (test < 0 || isNaN(test) || test === null) {
-                            //     console.log('pouet')
-                            //     // sideCardBurger.style.visibility = "hidden"
-                            // } else {
-                            //     // sideCardBurger.innerHtml = '<div class="notifPanierBurger">' + `<p>${qty.newQty}</p>` + '</div>';
-                            //     sideCardBurger.innerText = qty.newQty;
-                            // }
-
-                        })
+                    // .then(qty => {
+                    //     let sideCardBurger = document.querySelector('.rondPriceBurger');
+                    //
+                    //     let test = parseInt(qty.newQty);
+                    //
+                    //     // console.log(test)
+                    //     // if (test < 0 || isNaN(test) || test === null) {
+                    //     //     console.log('pouet')
+                    //     //     // sideCardBurger.style.visibility = "hidden"
+                    //     // } else {
+                    //     //     // sideCardBurger.innerHtml = '<div class="notifPanierBurger">' + `<p>${qty.newQty}</p>` + '</div>';
+                    //     //     sideCardBurger.innerText = qty.newQty;
+                    //     // }
+                    //
+                    // })
                 })
             })
         }

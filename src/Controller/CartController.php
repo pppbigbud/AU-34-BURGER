@@ -31,6 +31,10 @@ class CartController extends AbstractController
         $burgerId = $DataDecoded["burgerId"];
         $fries = $DataDecoded["fries"];
 
+        dump($DataDecoded);
+//        $duration = $DataDecoded["duration"];
+
+
 //        $session->remove(self::$CART);
         $panier = $session->get(self::$CART, []);
 
@@ -40,12 +44,14 @@ class CartController extends AbstractController
         if (!isset($panier['burger'][$burgerId])) {
             $panier['burger'][$burgerId] = [
                 'qty' => 1,
-                'nbFries' => $nbFries
+                'nbFries' => $nbFries,
+//                'duration' => $duration
             ];
         } else {
             $panier['burger'][$burgerId] = [
                 'qty' => $panier['burger'][$burgerId]['qty'] + 1,
-                'nbFries' => $panier['burger'][$burgerId]['nbFries'] + $nbFries
+                'nbFries' => $panier['burger'][$burgerId]['nbFries'] + $nbFries,
+//                'duration' => $panier['burger'][$burgerId]['nbFries'] + $duration
             ];
         }
 
@@ -65,7 +71,8 @@ class CartController extends AbstractController
     public function index(SessionInterface $session,
                           BurgerRepository $burgerRepository,
                           TacosRepository  $tacosRepository,
-                          DrinkRepository  $drinkRepository
+                          DrinkRepository  $drinkRepository,
+                          Request          $request
     ): Response
 
     {
@@ -80,10 +87,7 @@ class CartController extends AbstractController
         $totalArticles = 0;
         $priceTotalFries = 0;
 
-//        $burgerId = [];
-//        if(!isset($panier['burger'][$burgerId])){
-//            $burgerId = 0;
-//        }
+//        $DataDecoded = json_decode($request->get("data"), true);
 
 // ---------------------------SESSION CART BURGER et TACOS---------------------------------------------------
 
@@ -130,13 +134,16 @@ class CartController extends AbstractController
 
             $panierBurgerAll = $panier['burger'];
 
-            foreach ($panierBurgerAll as $panierBurgerID){
+            foreach ($panierBurgerAll as $panierBurgerID) {
                 $priceTotalFries = $panierBurgerID['nbFries'] * 2;
             }
 
             $totalBurgerWithFries = $totalBurger + $priceTotalFries;
 
         }
+
+        dump($session);
+
 
         return $this->render('cart/index.html.twig', [
             'itemsTotal' => $totalBurgerWithFries + $totalTacos + $totalDrink,
