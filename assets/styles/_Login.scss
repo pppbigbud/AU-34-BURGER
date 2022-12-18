@@ -1,13 +1,42 @@
 .dash {
-  border: 0.5rem dashed #242424;
+  position: relative;
+  padding: 20px 10px 20px 10px;
+  background-color: hsl(0, 0%, 21%);
   border-radius: 5%;
-  padding: 3%;
-  background-color: #a6a6a6;
-  box-shadow:5px 5px 60px -5px darken(#a6a6a6, 5%);
+  box-shadow: inset 0 0 0.5px 1px hsla(0, 0%,
+          100%, 0.075),
+    /* shadow ring 👇 */
+  0 0 0 1px hsla(0, 0%, 0%, 0.05),
+    /* multiple soft shadows 👇 */
+  0 0.3px 0.4px hsla(0, 0%, 0%, 0.02),
+  0 0.9px 1.5px hsla(0, 0%, 0%, 0.045),
+  0 3.5px 6px hsla(0, 0%, 0%, 0.09);
 
   .btnCentrage {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    top: 65%;
+    left: 20%;
+    width: 65%;
+    height: 22%;
+    //z-index: -1;
+
+    .btn-lg {
+      width: 70%;
+      height: 100px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      background-color: hsl(120, 100%, 25%);
+      border-color: #009955;
+      border-radius: 10px;
+      box-shadow: inset 0 0 0.5px 1px hsla(0, 0%,
+              100%, 0.075),
+        /* shadow ring 👇 */
+      0 0 0 1px hsla(0, 0%, 0%, 0.05),
+        /* multiple soft shadows 👇 */
+      0 0.3px 0.4px hsla(0, 0%, 0%, 0.02),
+      0 0.9px 1.5px hsla(0, 0%, 0%, 0.045),
+      0 3.5px 6px hsla(0, 0%, 0%, 0.09);
+    }
   }
 }

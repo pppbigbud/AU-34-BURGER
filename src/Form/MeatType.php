@@ -16,7 +16,7 @@ class MeatType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Viande'
+                'label' => 'Nom de la Viande'
             ])
             ->add('price', NumberType::class, [
                 'label' => 'Prix de la viande'

@@ -15,7 +15,7 @@ class CheeseType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Fromage'
+                'label' => 'Nom du nouveau Fromage'
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [

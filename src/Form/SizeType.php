@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Size;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -16,7 +17,7 @@ class SizeType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Taille'
+                'label' => 'Nom de la nouvelle Taille'
             ])
             ->add('price', NumberType::class, [
                 'label' => 'Prix de la nouvelle taille'

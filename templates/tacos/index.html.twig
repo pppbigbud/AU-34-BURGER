@@ -49,8 +49,10 @@
             {% endif %}
 
             {% if is_granted("ROLE_ADMIN") %}
-                <a class="btnModifierCart" href="{{ path('app_tacos_new') }}">Nouveaux Ingrédients</a>
-{#                <a class="btnModifierCart" href="{{ path('app_tacos_index') }}">Modifier/Supprimer</a>#}
+            <container class="d-flex justify-content-center m-4">
+                <a class="btnAjoutCart" href="{{ path('app_tacos_new') }}"><i class="fa-solid fa-cart-plus"></i> Nouveaux Ingrédients</a>
+            </container>
+                {#                <a class="btnModifierCart" href="{{ path('app_tacos_index') }}">Modifier/Supprimer</a>#}
             {% endif %}
 
             {{ form_end(form) }}

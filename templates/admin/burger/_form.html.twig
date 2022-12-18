@@ -1,6 +1,8 @@
 <div class="containerNewBurgerForm">
     <div class="fondFormBurgerNew">
+
         {{ form_start(form) }}
+
         <div class="row">
             <div class="col burgerFormNew">
                 {{ form_label(form.Name) }}
@@ -29,9 +31,14 @@
             </div>
         </div>
 
-        <button class="btnBurgerNew btnFormValid">{{ button_label|default('Enregistrer nouveau Burger') }}</button>
-        <button class="btnBurgerNew btnFormAnnul"><a href="{{ path('app_burger_index') }}">Annuler / Retour à la
-                liste</a></button>
-        {{ form_end(form) }}
+        <div class="btnFormBurger">
+            <button class="btnFormValid">{{ button_label|default('Enregistrer nouveau Burger') }}</button>
+
+            <button class="btnFormAnnul"><a href="{{ path('app_burger_index') }}">Annuler / Retour à la
+                    liste</a></button>
+
+            {{ form_end(form) }}
+        </div>
+
     </div>
 </div>

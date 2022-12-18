@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Se connecter !{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block main %}
 
@@ -17,14 +17,14 @@
                             href="{{ path('app_logout') }}">Logout</a>
                 </div>
             {% endif %}
-            <div class="btnCentrage">
-                <h1 class="h3 mb-3 font-weight-normal text-white">Connexion</h1>
-            </div>
+{#            <div class="btnCentrageTest">#}
+{#                <h1 class="h3 mb-3 font-weight-normal text-white">Connexion</h1>#}
+{#            </div>#}
 
             <label for="inputEmail" class="text-white">Email</label>
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mt-4"
                    autocomplete="email" required autofocus>
-            <label for="inputPassword" class="mt-4" class="text-white">Mot de Passe</label>
+            <label for="inputPassword" class="mt-4 text-white">Mot de Passe</label>
             <input type="password" name="password" id="inputPassword" class="form-control mt-4"
                    autocomplete="current-password" required>
 

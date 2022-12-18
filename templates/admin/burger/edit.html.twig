@@ -6,8 +6,6 @@
     <h1>Modifier Supprimer un Burger</h1>
 
     {{ include('admin/burger/_form.html.twig', {'button_label': 'Modifier'}) }}
+    {{ include('admin/burger/_delete_form.html.twig') }}
 
-    <div class="btnSup">
-        {{ include('admin/burger/_delete_form.html.twig') }}
-    </div>
 {% endblock %}

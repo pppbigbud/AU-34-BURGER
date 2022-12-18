@@ -66,8 +66,10 @@ class BurgerAdminController extends AbstractController
 
 
     #[Route('admin/{id}/edit', name: 'app_burger_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Burger $burger, BurgerRepository $burgerRepository): Response
+    public function edit(Request $request, Burger $burger, BurgerRepository $burgerRepository, string $id): Response
     {
+        $sandwich = $burgerRepository->find($id);
+
         $form = $this->createForm(BurgerType::class, $burger);
         $form->handleRequest($request);
 
@@ -78,6 +80,7 @@ class BurgerAdminController extends AbstractController
         }
 
         return $this->renderForm('admin/burger/edit.html.twig', [
+            'sandwich' => $sandwich,
             'burger' => $burger,
             'form' => $form,
         ]);
@@ -86,7 +89,7 @@ class BurgerAdminController extends AbstractController
     #[Route('admin/{id}', name: 'app_burger_delete', methods: ['POST'])]
     public function delete(Request $request, Burger $burger, BurgerRepository $burgerRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$burger->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $burger->getId(), $request->request->get('_token'))) {
             $burgerRepository->remove($burger, true);
         }
 

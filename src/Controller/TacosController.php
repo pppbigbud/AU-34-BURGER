@@ -18,7 +18,6 @@ class TacosController extends AbstractController
 {
 
     #[Route('/tacos', name: 'app_tacos_index')]
-//    #[ParamConverter('post', class: 'Tacos')]
     public function index(Request          $request,
                           SessionInterface $session,
                           TacosRepository  $tacosRepository,

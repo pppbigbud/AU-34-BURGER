@@ -15,7 +15,7 @@ class SauceType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Sauce'
+                'label' => 'Nom de la nouvelle Sauce'
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
