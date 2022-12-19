@@ -64,7 +64,7 @@ class DrinkAdminController extends AbstractController
         ]);
     }
 
-    #[Route('admin/{id}/edit', name: 'app_drink_edit', methods: ['GET', 'POST'])]
+    #[Route('admin/drink/{id}/edit', name: 'app_drink_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Drink $drink, DrinkRepository $drinkRepository): Response
     {
         $form = $this->createForm(DrinkType::class, $drink);
@@ -82,7 +82,7 @@ class DrinkAdminController extends AbstractController
         ]);
     }
 
-    #[Route('admin/{id}', name: 'app_drink_delete', methods: ['POST'])]
+    #[Route('admin/drink/{id}', name: 'app_drink_delete', methods: ['POST'])]
     public function delete(Request $request, Drink $drink, DrinkRepository $drinkRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $drink->getId(), $request->request->get('_token'))) {

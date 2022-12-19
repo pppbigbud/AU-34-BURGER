@@ -65,7 +65,7 @@ class BurgerAdminController extends AbstractController
     }
 
 
-    #[Route('admin/{id}/edit', name: 'app_burger_edit', methods: ['GET', 'POST'])]
+    #[Route('admin/burger/{id}/edit', name: 'app_burger_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Burger $burger, BurgerRepository $burgerRepository, string $id): Response
     {
         $sandwich = $burgerRepository->find($id);
@@ -86,7 +86,7 @@ class BurgerAdminController extends AbstractController
         ]);
     }
 
-    #[Route('admin/{id}', name: 'app_burger_delete', methods: ['POST'])]
+    #[Route('admin/burger/{id}', name: 'app_burger_delete', methods: ['POST'])]
     public function delete(Request $request, Burger $burger, BurgerRepository $burgerRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $burger->getId(), $request->request->get('_token'))) {
