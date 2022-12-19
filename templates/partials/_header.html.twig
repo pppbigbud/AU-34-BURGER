@@ -1,19 +1,39 @@
 <div class="headerCenter">
     <div class="headerBackground">
         <header>
-            <a href="{{ path('app_burger_index') }}" class="hoverHeader"><img class="iconHeader"
-                                                          src="{{ asset('build/images/burgerPanier.png') }}" alt="">BURGER</a>
-            <a href="{{ path('app_tacos_index') }}" class="hoverHeader"><img class="iconHeader"
-                                                         src="{{ asset('build/images/tacosPanier.png') }}" alt="">TACOS</a>
+            <div class="blocMenu backHeaderBurger">
+                <a href="{{ path('app_burger_index') }}" class="hoverHeader"><img class="iconHeader"
+                                                                                  src="{{ asset('build/images/burgerPanier.png') }}"
+                                                                                  alt="">BURGER
+                </a>
+            </div>
+            <div class="blocMenu backHeaderTacos">
+                <a href="{{ path('app_tacos_index') }}" class="hoverHeader"><img class="iconHeader"
+                                                                                 src="{{ asset('build/images/tacosPanier.png') }}"
+                                                                                 alt="">TACOS
+                </a>
+            </div>
+            <div class="blocMenu">
+                <a href="{{ path('app_calendar_index') }}" class="logoMarge">
+                    <img src="{{ asset('build/images/BurgerLogo.png') }}" class="logoHeader"
+                         alt="Logo 34 Burger">
+                </a>
+            </div>
 
-            <a href="{{ path('app_calendar_index') }}" class="logoMarge">
-                <img src="{{ asset('build/images/BurgerLogo.png') }}" class="logoHeader"
-             alt="Logo 34 Burger" ></a>
+            <div class="blocMenu backHeaderDrink">
+                <a href="{{ path('app_drink_index') }}" class="hoverHeader"><img class="iconHeader"
+                                                                                 src="{{ asset('build/images/frittesPanier.png') }}"
+                                                                                 alt="">BOISSONS
+                </a>
+            </div>
+            <div class="blocMenu backHeaderContact">
+                <a href="{{ path('app_home') }}" class="hoverHeader"><img class="iconHeader"
+                                                                          src="{{ asset('build/images/orderBurger.png') }}"
+                                                                          alt="">CONTACT
+                </a>
+            </div>
 
-            <a href="{{ path('app_drink_index') }}" class="hoverHeader"><img class="iconHeader"
-                                                         src="{{ asset('build/images/frittesPanier.png') }}" alt="">BOISSONS</a>
-            <a href="{{ path('app_home') }}" class="hoverHeader"><img class="iconHeader" src="{{ asset('build/images/orderBurger.png') }}"
-                                                  alt="">CONTACT</a>
+
         </header>
     </div>
 </div>

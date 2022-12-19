@@ -30,6 +30,7 @@ class TacosAdminController extends AbstractController
         if ($formSize->isSubmitted() && $formSize->isValid()) {
             $entityManager->persist($size);
             $entityManager->flush();
+            return $this->redirectToRoute('app_tacos_index');
         }
 
         $meat = new Meat();
@@ -38,6 +39,7 @@ class TacosAdminController extends AbstractController
         if ($formMeat->isSubmitted() && $formMeat->isValid()) {
             $entityManager->persist($meat);
             $entityManager->flush();
+            return $this->redirectToRoute('app_tacos_index');
         }
 
         $sauce = new Sauce();
@@ -46,6 +48,7 @@ class TacosAdminController extends AbstractController
         if ($formSauce->isSubmitted() && $formSauce->isValid()) {
             $entityManager->persist($sauce);
             $entityManager->flush();
+            return $this->redirectToRoute('app_tacos_index');
         }
 
 
@@ -55,6 +58,7 @@ class TacosAdminController extends AbstractController
         if ($formCheese->isSubmitted() && $formCheese->isValid()) {
             $entityManager->persist($cheese);
             $entityManager->flush();
+            return $this->redirectToRoute('app_tacos_index');
         }
 
         return $this->renderForm('admin/tacos/new.html.twig', [

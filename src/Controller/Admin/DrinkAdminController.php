@@ -54,6 +54,9 @@ class DrinkAdminController extends AbstractController
                 $drink->setImagePath($newFileName);
                 $this->entityManager->persist($drink);
                 $this->entityManager->flush();
+
+                return $this->redirectToRoute('app_drink_index');
+
             } catch (\Exception $e) {
 
             }

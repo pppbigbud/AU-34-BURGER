@@ -3,6 +3,9 @@ footer {
   justify-content: center;
   align-items: center;
   margin-top: 10vh;
+  //position: sticky;
+  //bottom: 0;
+  //z-index: 100000;
 
   .blocFooter {
     display: flex;

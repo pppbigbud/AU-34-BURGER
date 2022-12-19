@@ -54,6 +54,9 @@ class BurgerAdminController extends AbstractController
                 $burger->setImagePath($newFileName);
                 $this->entityManager->persist($burger);
                 $this->entityManager->flush();
+
+                return $this->redirectToRoute('app_burger_index');
+
             } catch (\Exception $e) {
 
             }
