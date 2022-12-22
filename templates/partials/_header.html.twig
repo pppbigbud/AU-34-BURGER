@@ -13,9 +13,9 @@
                                                                                  alt="">TACOS
                 </a>
             </div>
-            <div class="blocMenu">
+            <div class="blocMenu" >
                 <a href="{{ path('app_calendar_index') }}" class="logoMarge">
-                    <img src="{{ asset('build/images/BurgerLogo.png') }}" class="logoHeader"
+                    <img src="{{ asset('build/images/BurgerLogo.png') }}" class="logoHeader" id="blocLogo"
                          alt="Logo 34 Burger">
                 </a>
             </div>
@@ -37,3 +37,18 @@
         </header>
     </div>
 </div>
+
+<script>
+
+    const logo = document.getElementById('blocLogo')
+
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > 100){
+            logo.classList.add('miniSize')
+            logo.classList.remove('logoHeader')
+        } else {
+            logo.classList.add('logoHeader')
+            logo.classList.remove('miniSize')
+        }
+    })
+</script>

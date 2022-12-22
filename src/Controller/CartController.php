@@ -72,7 +72,7 @@ class CartController extends AbstractController
                           BurgerRepository $burgerRepository,
                           TacosRepository  $tacosRepository,
                           DrinkRepository  $drinkRepository,
-                          Request          $request
+//                          Request          $request
     ): Response
 
     {
@@ -134,15 +134,24 @@ class CartController extends AbstractController
 
             $panierBurgerAll = $panier['burger'];
 
+//            $totalBurgerWithFries = 0;
+
             foreach ($panierBurgerAll as $panierBurgerID) {
                 $priceTotalFries = $panierBurgerID['nbFries'] * 2;
             }
-
             $totalBurgerWithFries = $totalBurger + $priceTotalFries;
+////            test condition si panier vide BurgerEtFrittes
+//            if (!isset($totalBurgerWithFries)) {
+//
+//                dump($panierWithData['burger']);
+//            } else {
+//                dump($panierWithData['tacos']);
+////                $totalBurgerWithFries = 0;
+//            }
 
         }
 
-        dump($session);
+//        dump($session);
 
 
         return $this->render('cart/index.html.twig', [

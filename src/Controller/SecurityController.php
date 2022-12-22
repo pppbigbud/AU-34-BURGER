@@ -10,6 +10,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -18,7 +20,8 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 class SecurityController extends AbstractController
 {
     #[Route(path: '/login', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils,
+    public function login(MailerInterface $mailer,
+                          AuthenticationUtils $authenticationUtils,
                           Request $request, UserPasswordHasherInterface $userPasswordHasher,
                           UserAuthenticatorInterface $userAuthenticator,
                           AppUserAuthenticator $authenticator,
@@ -59,6 +62,15 @@ class SecurityController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
+
+            $email = (new Email())
+            ->from('pppbigbud@gmail.com')
+                ->to($user->getEmail())
+                ->subject('Bienvenu chez 34 Burger vous pouvez maintenant retourner sur notre site pour commander :)')
+                ->text("Merci pour votre inscription {$user->getFirstname()}!")
+            ;
+
+            $mailer->send($email);
 
             return $userAuthenticator->authenticateUser(
                 $user,

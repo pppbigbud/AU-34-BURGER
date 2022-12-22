@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Cheese;
+use App\Entity\Drink;
 use App\Entity\Meat;
 use App\Entity\Sauce;
 use App\Entity\Size;
@@ -10,6 +11,8 @@ use App\Form\CheeseType;
 use App\Form\MeatType;
 use App\Form\SauceType;
 use App\Form\SizeType;
+use App\Repository\DrinkRepository;
+use App\Repository\MeatRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,7 +25,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class TacosAdminController extends AbstractController
 {
     #[Route('admin/tacos/new', name: 'app_tacos_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager,
+    Meat $meat): Response
     {
         $size = new Size();
         $formSize = $this->createForm(SizeType::class, $size);
@@ -62,10 +66,22 @@ class TacosAdminController extends AbstractController
         }
 
         return $this->renderForm('admin/tacos/new.html.twig', [
+            'meat' => $meat,
             'formSize' => $formSize,
             'formMeat' => $formMeat,
             'formSauce' => $formSauce,
             'formCheese' => $formCheese,
         ]);
     }
+
+    #[Route('admin/tacos/{id}', name: 'app_meat_delete', methods: ['POST'])]
+    public function delete(Request $request, Meat $meat, MeatRepository $meatRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $meat->getId(), $request->request->get('_token'))) {
+            $meatRepository->remove($meat, true);
+        }
+
+        return $this->redirectToRoute('app_tacos_index', [], Response::HTTP_SEE_OTHER);
+    }
+
 }

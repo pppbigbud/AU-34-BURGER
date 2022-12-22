@@ -4,15 +4,21 @@
 
 {% block main %}
     <div class="globalRegisterLogin">
+
         <div class="containerLogin">
-            <h1 class="titleForm">Créer votre compte</h1>
+
+            <div class="positionRondForm">
+                <div class="rondFond">
+                    <img src="/build/images/userIconConnected.png" class="ConnexionLogoAdmin" alt="ConnexionLogoAdmin">
+                </div>
+            </div>
 
             <div class="containerUserForm ">
 
                 <div class="rowUserForm">
                     {{ form_start(registrationForm) }}
                     <div class="fondUserForm">
-
+                        <h1 class="titleForm">Créer un compte</h1>
                         <div class="spaceRowForm">
                             {{ form_row(registrationForm.email) }}
                             {{ form_row(registrationForm.plainPassword, {
@@ -33,30 +39,39 @@
             </div>
         </div>
 
+        <div class="separateurContainer">
+            <div class="separateur"></div>
+        </div>
+
         <div class="containerRegister">
-            <h1 class="titleForm">Connectez-vous</h1>
+
+            <div class="positionRondForm">
+                <div class="rondFond">
+                    <img src="/build/images/userIcon.png" class="ConnexionLogoAdmin" alt="ConnexionLogoAdmin">
+                </div>
+            </div>
 
             <div class="containerUserForm ">
-
                 <div class="rowUserForm">
                     {{ form_start(userForm) }}
 
                     <div class="fondUserForm">
+                        <h1 class="titleForm">Connexion</h1>
 
                         <div class="spaceRowForm">
                             <label for="inputEmail" class="text-white mb-3">Email</label>
-                                                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
-                                                           class="form-control mb-3"
-                                                           autocomplete="email" required autofocus>
-                                                    <label for="inputPassword" class="text-white mb-3">Mot de Passe</label>
-                                                    <input type="password" name="password" id="inputPassword" class="form-control mb-3"
-                                                           autocomplete="current-password" required>
-                                                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
+                                   class="form-control mb-3"
+                                   autocomplete="email" required autofocus>
+                            <label for="inputPassword" class="text-white mb-3">Mot de Passe</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control mb-3"
+                                   autocomplete="current-password" required>
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                         </div>
 
 
                         <div class="accordCGV">
-                            <label>
+                            <label class="form-check">
                                 <input type="checkbox" name="_remember_me"> Se souvenir de moi
                             </label>
                         </div>
