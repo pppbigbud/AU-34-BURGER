@@ -20,12 +20,10 @@
             </div>
 
 
-
-            <div class="logoHeader" id="blocLogo">
-                    <img src="{{ asset('build/images/BurgerLogo.png') }}" class="logoHeader" id="blocLogo"
-                         alt="Logo 34 Burger">
+            <div class="logoHeader" id="test">
+                <img class="logoBloc" id="blocLogo" src="{{ asset('build/images/BurgerLogo.png') }}"
+                     alt="Logo 34 Burger">
             </div>
-
 
 
             <div class="blocMenu backHeaderDrink">
@@ -44,7 +42,7 @@
                          alt="">CONTACT
 
                 </a>
-{#                <div class="testBarre"></div>#}
+                {#                <div class="testBarre"></div> #}
             </div>
 
 
@@ -56,32 +54,29 @@
     const activePage = window.location.pathname
     const links = document.querySelectorAll('.blocMenu')
     const test = document.querySelectorAll('.testBarre')
-    // const  iconeHeader = document.querySelectorAll('.iconHeader')
-
-
-        console.log(activePage)
-
 
     links.forEach(bloc => {
         if (bloc.querySelector("a").href.includes(activePage)) {
-            console.log('test21212')
-            bloc.querySelector('.testBarre').style.display="block"
+            // console.log('test21212')
+            bloc.querySelector('.testBarre').style.display = "block"
         } else {
-            bloc.querySelector('.testBarre').style.display="none"
+            bloc.querySelector('.testBarre').style.display = "none"
         }
     })
+</script>
+<script>
+    const logo = document.querySelector(".logoBloc")
+    console.log(logo)
 
-    // variable pour le scroll
-    const logo = document.getElementById('blocLogo')
 
     window.addEventListener('scroll', () => {
-        if(window.scrollY > 100){
+        if (window.scrollY > 100) {
+            console.log('test')
+            logo.classList.remove('logoBloc')
             logo.classList.add('miniSize')
-            logo.classList.remove('logoHeader')
         } else {
-            logo.classList.add('logoHeader')
+            logo.classList.add('logoBloc')
             logo.classList.remove('miniSize')
         }
     })
-
 </script>

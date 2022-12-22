@@ -34,15 +34,18 @@
         width: 20%;
         height: auto;
 
-        .miniSize {
-          width: 10px;
-          height: 10px;
-        }
-
-        img {
+        .logoBloc {
           width: 70%;
           height: auto;
           margin-top: 9vh;
+          transition: width 0.2s, height 0.2s, transform 0.2s;
+        }
+
+        .miniSize {
+          width: 45%;
+          height: auto;
+          margin-top: 5vh;
+          transition: width 0.2s, height 0.2s, transform 0.2s;
         }
       }
 
