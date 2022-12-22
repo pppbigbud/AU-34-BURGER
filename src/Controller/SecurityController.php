@@ -19,6 +19,9 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class SecurityController extends AbstractController
 {
+    /**
+     * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
+     */
     #[Route(path: '/login', name: 'app_login')]
     public function login(MailerInterface $mailer,
                           AuthenticationUtils $authenticationUtils,
@@ -67,7 +70,7 @@ class SecurityController extends AbstractController
             ->from('pppbigbud@gmail.com')
                 ->to($user->getEmail())
                 ->subject('Bienvenu chez 34 Burger vous pouvez maintenant retourner sur notre site pour commander :)')
-                ->text("Merci pour votre inscription {$user->getFirstname()}!")
+//                ->text("Merci pour votre inscription {$user->getFirstname()}!")
             ;
 
             $mailer->send($email);
