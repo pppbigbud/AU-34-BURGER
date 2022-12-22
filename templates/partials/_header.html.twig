@@ -2,35 +2,49 @@
     <div class="headerBackground">
         <header>
             <div class="blocMenu backHeaderBurger">
-                <a href="{{ path('app_burger_index') }}" class="hoverHeader"><img class="iconHeader"
-                                                                                  src="{{ asset('build/images/burgerPanier.png') }}"
-                                                                                  alt="">BURGER
+                <a href="{{ path('app_burger_index') }}" class="test">
+                    <img class="iconHeader"
+                         src="{{ asset('build/images/burgerPanier.png') }}"
+                         alt="">BURGER
                 </a>
-            </div>
-            <div class="blocMenu backHeaderTacos">
-                <a href="{{ path('app_tacos_index') }}" class="hoverHeader"><img class="iconHeader"
-                                                                                 src="{{ asset('build/images/tacosPanier.png') }}"
-                                                                                 alt="">TACOS
-                </a>
-            </div>
-            <div class="blocMenu" >
-                <a href="{{ path('app_calendar_index') }}" class="logoMarge">
-                    <img src="{{ asset('build/images/BurgerLogo.png') }}" class="logoHeader" id="blocLogo"
-                         alt="Logo 34 Burger">
-                </a>
+                <div class="testBarre"></div>
             </div>
 
-            <div class="blocMenu backHeaderDrink">
-                <a href="{{ path('app_drink_index') }}" class="hoverHeader"><img class="iconHeader"
-                                                                                 src="{{ asset('build/images/frittesPanier.png') }}"
-                                                                                 alt="">BOISSONS
+            <div class="blocMenu backHeaderTacos">
+                <a href="{{ path('app_tacos_index') }}" class="test">
+                    <img class="iconHeader"
+                         src="{{ asset('build/images/tacosPanier.png') }}"
+                         alt="">TACOS
                 </a>
+                <div class="testBarre"></div>
             </div>
-            <div class="blocMenu backHeaderContact">
-                <a href="{{ path('app_home') }}" class="hoverHeader"><img class="iconHeader"
-                                                                          src="{{ asset('build/images/orderBurger.png') }}"
-                                                                          alt="">CONTACT
+
+
+
+            <div class="logoHeader" id="blocLogo">
+                    <img src="{{ asset('build/images/BurgerLogo.png') }}" class="logoHeader" id="blocLogo"
+                         alt="Logo 34 Burger">
+            </div>
+
+
+
+            <div class="blocMenu backHeaderDrink">
+                <a href="{{ path('app_drink_index') }}" class="test">
+                    <img class="iconHeader"
+                         src="{{ asset('build/images/frittesPanier.png') }}"
+                         alt="">BOISSONS
                 </a>
+                <div class="testBarre"></div>
+            </div>
+
+            <div class="blocMenu backHeaderContact">
+                <a href="{{ path('app_home') }}" class="test">
+                    <img class="iconHeader"
+                         src="{{ asset('build/images/orderBurger.png') }}"
+                         alt="">CONTACT
+
+                </a>
+{#                <div class="testBarre"></div>#}
             </div>
 
 
@@ -39,7 +53,25 @@
 </div>
 
 <script>
+    const activePage = window.location.pathname
+    const links = document.querySelectorAll('.blocMenu')
+    const test = document.querySelectorAll('.testBarre')
+    // const  iconeHeader = document.querySelectorAll('.iconHeader')
 
+
+        console.log(activePage)
+
+
+    links.forEach(bloc => {
+        if (bloc.querySelector("a").href.includes(activePage)) {
+            console.log('test21212')
+            bloc.querySelector('.testBarre').style.display="block"
+        } else {
+            bloc.querySelector('.testBarre').style.display="none"
+        }
+    })
+
+    // variable pour le scroll
     const logo = document.getElementById('blocLogo')
 
     window.addEventListener('scroll', () => {
@@ -51,4 +83,5 @@
             logo.classList.remove('miniSize')
         }
     })
+
 </script>

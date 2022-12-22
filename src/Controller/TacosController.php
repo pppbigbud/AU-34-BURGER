@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TacosController extends AbstractController
 {
 
-    #[Route('/tacos', name: 'app_tacos_index')]
+    #[Route('/tacos/', name: 'app_tacos_index')]
     public function index(Request          $request,
                           SessionInterface $session,
                           TacosRepository  $tacosRepository,

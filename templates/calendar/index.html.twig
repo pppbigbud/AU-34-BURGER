@@ -11,41 +11,41 @@
     </div>
     
 
-    {% block javascripts %}
-    <script>
-        window.onload = () => {
-        let calendarElt = document.querySelector("#calendrier")
-        let calendar = new FullCalendar.Calendar(calendarElt, {
-            initialView: 'timeGridWeek',
-            locale:'fr',
-            timeZone:'Europe/Paris',
-            headerToolbar: {
-                start:'prev,next today',
-                center:'title',
-                end:'dayGridMonth,timeGridWeek',
-            },
+{#    {% block javascripts %}#}
+{#    <script>#}
+{#        window.onload = () => {#}
+{#        let calendarElt = document.querySelector("#calendrier")#}
+{#        let calendar = new FullCalendar.Calendar(calendarElt, {#}
+{#            initialView: 'timeGridWeek',#}
+{#            locale:'fr',#}
+{#            timeZone:'Europe/Paris',#}
+{#            headerToolbar: {#}
+{#                start:'prev,next today',#}
+{#                center:'title',#}
+{#                end:'dayGridMonth,timeGridWeek',#}
+{#            },#}
 
-            views:{
-                timeGrid:{
-                    slotMinTime:'06:00:00',
-                    slotMaxTime:'23:00:00',
-                },
-            },
+{#            views:{#}
+{#                timeGrid:{#}
+{#                    slotMinTime:'06:00:00',#}
+{#                    slotMaxTime:'23:00:00',#}
+{#                },#}
+{#            },#}
 
-            events: {{ data | raw }},
+{#            events: {{ data | raw }},#}
 
-        })
+{#        })#}
 
-            calendar.render()
+{#            calendar.render()#}
 
-    }
-
-
-
-    </script>
+{#    }#}
 
 
-    {% endblock %}
+
+{#    </script>#}
+
+
+{#    {% endblock %}#}
 
 
 {% endblock %}
