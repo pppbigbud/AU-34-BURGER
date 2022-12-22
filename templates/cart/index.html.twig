@@ -218,13 +218,14 @@
 
         {% if itemsTotal > 0 %}
 
-            <div class="d-flex justify-content-center">
-                <div class="d-flex justify-content-end w-75"><h1>Votre Total {{ itemsTotal }} €</h1></div>
-            </div>
+            <div class="containerTotalCart">
+                <img class="orderValidationImg" src="{{ asset( 'build/images/validationOrder.png') }}"
+                     alt="Ordervalidation">
 
-            <div class="d-flex justify-content-center">
-                <div class="d-flex justify-content-end w-75">
-                    <button>Passer au paiement</button>
+                <div class="totalCart">
+                    <p>Commander pour :</p>
+                    <br>
+                    <p>{{ itemsTotal }} €</p>
                 </div>
             </div>
 
