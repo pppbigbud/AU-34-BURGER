@@ -4,21 +4,19 @@
 
         {#- -------------------------------BURGER------------------------------------ -#}
 
-{#            <div class="rondPriceBurger">#}
-
-{#            </div>#}
-
-                {% if totalBurgerSideCart > 0 %}
-                    <div class="rondPriceBurger">
+                {% set hasBurger = totalBurgerSideCart > 0 %}
+                    <div data-cart-burger class="{{ hasBurger ? "" : "d-none" }}">
+                        <div class="rondPriceBurger">
                             {{ totalBurgerSideCart }}
+                        </div>
+                        <div class="burgerSideCartImg">
+                            <img src="{{ asset( 'build/images/burgerPanier.png') }}"
+                                 alt=""
+                                 style="width: 45px; height: 45px"
+                                 class="rounded-circle"/>
+                        </div>
                     </div>
-                    <div class="burgerSideCartImg">
-                        <img src="{{ asset( 'build/images/burgerPanier.png') }}"
-                             alt=""
-                             style="width: 45px; height: 45px"
-                             class="rounded-circle"/>
-                    </div>
-                {% endif %}
+
 
         {#- -------------------------------TACOS------------------------------------ -#}
 

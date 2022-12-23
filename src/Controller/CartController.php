@@ -6,7 +6,6 @@ use App\Repository\DrinkRepository;
 use App\Repository\TacosRepository;
 use App\Services\CartService;
 use App\Repository\BurgerRepository;
-
 //use Flasher\Prime\Flasher;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends AbstractController
 {
-    public static string $CART = 'panier';
+    public static string $CART = CartService::CART_KEY;
     public static string $ITEM_QTY = 'qty_panier';
 
     #[Route('/addBurgerToCart/{data}', name: 'app_fries_to_cart')]
@@ -33,7 +32,6 @@ class CartController extends AbstractController
 
         dump($DataDecoded);
 //        $duration = $DataDecoded["duration"];
-
 
 //        $session->remove(self::$CART);
         $panier = $session->get(self::$CART, []);
@@ -72,7 +70,6 @@ class CartController extends AbstractController
                           BurgerRepository $burgerRepository,
                           TacosRepository  $tacosRepository,
                           DrinkRepository  $drinkRepository,
-//                          Request          $request
     ): Response
 
     {
@@ -180,22 +177,16 @@ class CartController extends AbstractController
     }
 
     #[Route('/panier/remove/burger/{id}', name: 'cart_remove_burger')]
-    public function removeBurger($id, SessionInterface $session): Response
+    public function removeBurger($id, SessionInterface $session, CartService $cartService): Response
     {
-        $panier = $session->get('panier', []);
+        $panier = $cartService->getPanier($session);
 
         if (!empty($panier['burger'][$id])) {
             unset($panier['burger'][$id]);
         }
-        $session->set('panier', $panier);
 
-        $sessionQtityBurger = $session->get('qty_panier', []);
-
-        if (!empty($sessionQtityBurger)) {
-            unset($sessionQtityBurger);
-        }
-
-        $session->set('qty_panier', $sessionQtityBurger);
+        $session->set(CartService::CART_KEY, $panier);
+        $session->set('qty_panier', $cartService->getBurgerQuantity($session));
 
         return $this->redirectToRoute('app_cart', []);
     }

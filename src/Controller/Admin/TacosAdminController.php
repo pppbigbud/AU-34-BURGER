@@ -25,8 +25,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TacosAdminController extends AbstractController
 {
     #[Route('admin/tacos/new', name: 'app_tacos_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager,
-    Meat $meat): Response
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $size = new Size();
         $formSize = $this->createForm(SizeType::class, $size);

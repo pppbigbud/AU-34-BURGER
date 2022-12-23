@@ -25,7 +25,8 @@ class SecurityController extends AbstractController
     #[Route(path: '/login', name: 'app_login')]
     public function login(MailerInterface $mailer,
                           AuthenticationUtils $authenticationUtils,
-                          Request $request, UserPasswordHasherInterface $userPasswordHasher,
+                          Request $request,
+                          UserPasswordHasherInterface $userPasswordHasher,
                           UserAuthenticatorInterface $userAuthenticator,
                           AppUserAuthenticator $authenticator,
                           EntityManagerInterface $entityManager): Response

@@ -21,6 +21,9 @@
                         <h1 class="titleForm">Créer un compte</h1>
                         <div class="spaceRowForm">
                             {{ form_row(registrationForm.email) }}
+                            {{ form_row(registrationForm.firstname) }}
+                            {{ form_row(registrationForm.lastname) }}
+                            {{ form_row(registrationForm.phone) }}
                             {{ form_row(registrationForm.plainPassword, {
                                 label: 'Mot de Passe'
                             }) }}
@@ -31,8 +34,10 @@
                             }) }}
                         </div>
                     </div>
-                    <div class="blocFormBtnValidationUser">
-                        {{ form_row(registrationForm.submit, { 'label': 'Ajouter' }) }}
+{#                    class="blocFormBtnValidationUser"#}
+                    <div>
+{#                        <button type="submit">Inscription</button>#}
+{#                        {{ form_row(registrationForm.submit, { 'label': 'Ajouter' }) }}#}
                     </div>
                     {{ form_end(registrationForm) }}
                 </div>

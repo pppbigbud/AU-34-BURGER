@@ -39,21 +39,15 @@
                         .then((response) => {
                             return response.json();
                         })
-                    // .then(qty => {
-                    //     let sideCardBurger = document.querySelector('.rondPriceBurger');
-                    //
-                    //     let test = parseInt(qty.newQty);
-                    //
-                    //     // console.log(test)
-                    //     // if (test < 0 || isNaN(test) || test === null) {
-                    //     //     console.log('pouet')
-                    //     //     // sideCardBurger.style.visibility = "hidden"
-                    //     // } else {
-                    //     //     // sideCardBurger.innerHtml = '<div class="notifPanierBurger">' + `<p>${qty.newQty}</p>` + '</div>';
-                    //     //     sideCardBurger.innerText = qty.newQty;
-                    //     // }
-                    //
-                    // })
+                    .then(res => {
+                        const burgerCart = document.querySelector("[data-cart-burger]");
+
+                        const newQty = parseInt(res.newQty);
+                        burgerCart.classList.toggle('d-none', newQty == 0);
+
+                        const rondQtyBurger = burgerCart.querySelector('.rondPriceBurger');
+                        rondQtyBurger.innerText = newQty;
+                    })
                 })
             })
         }
