@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Product index{% endblock %}
+{% block title %}🍔 BURGERS 🍔{% endblock %}
 
 {% block main %}
     <div class="container">
@@ -35,6 +35,8 @@
                         burgerDuration
                     };
 
+                    // flasher.success("Votre Burger à bien été ajouté!")
+
                     fetch('/addBurgerToCart/' + JSON.stringify(data))
                         .then((response) => {
                             return response.json();
@@ -43,7 +45,7 @@
                         const burgerCart = document.querySelector("[data-cart-burger]");
 
                         const newQty = parseInt(res.newQty);
-                        burgerCart.classList.toggle('d-none', newQty == 0);
+                        burgerCart.classList.toggle('d-none', newQty === 0);
 
                         const rondQtyBurger = burgerCart.querySelector('.rondPriceBurger');
                         rondQtyBurger.innerText = newQty;
@@ -51,7 +53,6 @@
                 })
             })
         }
-
     </script>
 
 {% endblock %}

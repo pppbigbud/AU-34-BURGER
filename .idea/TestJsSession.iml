@@ -139,8 +139,11 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/async-aws/ses" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/async-aws/core" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/amazon-mailer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-flasher/flasher-symfony" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-flasher/flasher" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="@flasher/flasher" level="application" />
   </component>
 </module>

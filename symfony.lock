@@ -35,6 +35,9 @@
             "./migrations/.gitignore"
         ]
     },
+    "php-flasher/flasher-symfony": {
+        "version": "v1.8.2"
+    },
     "phpunit/phpunit": {
         "version": "9.5",
         "recipe": {

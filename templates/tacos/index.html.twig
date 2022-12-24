@@ -1,8 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tacos Configurateur{% endblock %}
+{% block title %}🌮 Tacos Config 🌮{% endblock %}
 
 {% block main %}
+
+{#    <div class="presentationConfigTacos">#}
+{#        <img src="{{ asset('build/images/chefTacos.png') }}" class="chefTacos" alt="chefTacos">#}
+{#        <p>Configure ton tacos et nous nous chargeons du reste</p>#}
+{#    </div>#}
 
     <div class="alignementBackground">
 
@@ -33,30 +38,41 @@
                     {{ form_row(form.cheese) }}
                 </div>
             </div>
-
-            {% if app.user != null %}
-                <container class="d-flex justify-content-center m-4">
-                    <button type="submit" class="btnAjoutCart"><i class="fa-solid fa-cart-plus"></i> Ajouter au Panier
-                    </button>
-                </container>
-            {% else %}
-                <container class="d-flex justify-content-center m-4">
-                    <a class="btnAjoutCart m-2" href="{{ path('app_login') }}"><i
-                                class="fa-solid fa-person-chalkboard"></i> Créer un compte</a>
-                    <a class="btnAjoutCart m-2" href="{{ path('app_login') }}"><i class="fa-solid fa-key"></i> Se
-                        connecter</a>
-                </container>
-            {% endif %}
-
-            {% if is_granted("ROLE_ADMIN") %}
-            <container class="d-flex justify-content-center m-4">
-                <a class="btnAjoutCart" href="{{ path('app_tacos_new') }}"><i class="fa-solid fa-cart-plus"></i> Nouveaux Ingrédients</a>
-            </container>
-                {#                <a class="btnModifierCart" href="{{ path('app_tacos_index') }}">Modifier/Supprimer</a>#}
-            {% endif %}
-
-            {{ form_end(form) }}
-
         </div>
+
+        {#- -----------Si connecté et pas USER----------- -#}
+        {% if app.user != null %}
+            <div class="blocFormBtnTacos">
+            <button type="submit" class="btnTacosLogin">
+                <i class="iconConnectTacos fa-solid fa-cart-plus"></i>
+                Ajouter au Panier
+            </button>
+
+            {#- -----------Si connecté et ADMIN--------------- -#}
+            {% if is_granted("ROLE_ADMIN") %}
+                <a class="btnTacosCreate" href="{{ path('app_tacos_new') }}">
+                    <i class="fa-solid fa-cart-plus"></i>
+                    Nouveaux Ingrédients
+                </a>
+                </div>
+                {#                <a class="btnModifierCart" href="{{ path('app_tacos_index') }}">Modifier/Supprimer</a> #}
+            {% endif %}
+
+        {% endif %}
+
+        {#- -----------Si connecté et USER--------------- -#}
+        {% if app.user == null %}
+            <div class="blocFormBtnTacos">
+                <a class="btnTacosCreate" href="{{ path('app_login') }}">
+                    <i class="iconConnectTacos fa-solid fa-person-chalkboard"></i>
+                    Créer un compte
+                </a>
+                <a class="btnTacosLogin" href="{{ path('app_login') }}">
+                    <i class="iconConnectTacos fa-solid fa-key"></i>
+                    Se connecter
+                </a>
+            </div>
+        {% endif %}
+        {{ form_end(form) }}
     </div>
 {% endblock %}

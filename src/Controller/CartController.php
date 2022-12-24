@@ -6,7 +6,6 @@ use App\Repository\DrinkRepository;
 use App\Repository\TacosRepository;
 use App\Services\CartService;
 use App\Repository\BurgerRepository;
-//use Flasher\Prime\Flasher;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -60,6 +59,8 @@ class CartController extends AbstractController
             $qty += $item['qty'];
         }
         $session->set(self::$ITEM_QTY, $qty);
+
+
 
         return new JsonResponse(['newQty' => $qty]);
     }
@@ -131,25 +132,13 @@ class CartController extends AbstractController
 
             $panierBurgerAll = $panier['burger'];
 
-//            $totalBurgerWithFries = 0;
-
             foreach ($panierBurgerAll as $panierBurgerID) {
-                $priceTotalFries = $panierBurgerID['nbFries'] * 2;
+
+                    $priceTotalFries = $panierBurgerID['nbFries'] * 2;
             }
+
             $totalBurgerWithFries = $totalBurger + $priceTotalFries;
-////            test condition si panier vide BurgerEtFrittes
-//            if (!isset($totalBurgerWithFries)) {
-//
-//                dump($panierWithData['burger']);
-//            } else {
-//                dump($panierWithData['tacos']);
-////                $totalBurgerWithFries = 0;
-//            }
-
         }
-
-//        dump($session);
-
 
         return $this->render('cart/index.html.twig', [
             'itemsTotal' => $totalBurgerWithFries + $totalTacos + $totalDrink,

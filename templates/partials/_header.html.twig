@@ -12,21 +12,19 @@
 
             <div class="blocMenu backHeaderTacos">
                 <div class="blocImagePicto">
-                <a href="{{ path('app_tacos_index') }}" class="test">
-                    <img class="iconHeader"
-                         src="{{ asset('build/images/tacosPanier.png') }}"
-                         alt="">TACOS
-                </a>
+                    <a href="{{ path('app_tacos_index') }}" class="test">
+                        <img class="iconHeader"
+                             src="{{ asset('build/images/tacosPanier.png') }}"
+                             alt="">TACOS
+                    </a>
                 </div>
                 <div class="testBarre"></div>
             </div>
-
 
             <div class="logoHeader" id="test">
                 <img class="logoBloc" id="blocLogo" src="{{ asset('build/images/BurgerLogo.png') }}"
                      alt="Logo 34 Burger">
             </div>
-
 
             <div class="blocMenu backHeaderDrink">
                 <a href="{{ path('app_drink_index') }}" class="test">
@@ -38,13 +36,13 @@
             </div>
 
             <div class="blocMenu backHeaderContact">
-                <a href="{{ path('app_home') }}" class="test">
+                <a href="{{ path('app_contact') }}" class="test">
                     <img class="iconHeader"
                          src="{{ asset('build/images/orderBurger.png') }}"
                          alt="">CONTACT
 
                 </a>
-                {#                <div class="testBarre"></div> #}
+                <div class="testBarre"></div>
             </div>
 
 
@@ -58,11 +56,13 @@
     const test = document.querySelectorAll('.testBarre')
 
     links.forEach(bloc => {
-        if (bloc.querySelector("a").href.includes(activePage)) {
-            // console.log('test21212')
-            bloc.querySelector('.testBarre').style.display = "block"
-        } else {
-            bloc.querySelector('.testBarre').style.display = "none"
+        console.log(activePage)
+        if (activePage !== "/") {
+            if (bloc.querySelector("a").href.includes(activePage)) {
+                bloc.querySelector('.testBarre').style.display = "block"
+            } else {
+                bloc.querySelector('.testBarre').style.display = "none"
+            }
         }
     })
 </script>
@@ -81,4 +81,8 @@
             logo.classList.remove('miniSize')
         }
     })
+</script>
+<script>
+
+
 </script>

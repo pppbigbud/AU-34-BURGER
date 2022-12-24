@@ -5,7 +5,7 @@
   justify-content: center;
   align-content: center;
   margin-bottom: 15vh;
-  z-index: 100000;
+  z-index: 800;
 
   .headerBackground {
     display: flex;
@@ -56,11 +56,11 @@
       .blocMenu {
         position: relative;
         display: flex;
-        //flex-direction: column;
         justify-content: center;
         align-items: center;
 
-        .blocImagePicto{
+
+        .blocImagePicto {
           display: flex;
           flex-direction: row;
         }
@@ -72,8 +72,9 @@
           position: absolute;
           bottom: -15%;
           left: 27%;
-          background: rgb(255,255,255);
-          background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgb(255, 148, 0) 50%, rgba(255,255,255,0) 100%);border-radius: 10px;
+          background: rgb(255, 255, 255);
+          background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgb(255, 148, 0) 50%, rgba(255, 255, 255, 0) 100%);
+          border-radius: 10px;
           box-shadow: inset 0 0 0.5px 1px hsla(0, 0%,
                   100%, 0.075),
             /* shadow ring 👇 */
@@ -82,8 +83,32 @@
           0 0.3px 0.4px hsla(0, 0%, 0%, 0.02),
           0 0.9px 1.5px hsla(0, 0%, 0%, 0.045),
           0 3.5px 6px hsla(0, 0%, 0%, 0.09);
-          opacity: 0.8;
+          opacity: 0.5;
           z-index: -1;
+          animation: testBarre 500ms;
+        }
+
+        @keyframes testBarre{
+          0% {
+            transform: scaleX(0);
+            opacity: 0;
+          }
+          17% {
+            transform: scaleX(.18);
+          }
+          24% {
+            transform: scaleX(.4);
+          }
+          46% {
+            transform: scaleX(.81);
+          }
+          //85% {
+          //  opacity: 1;
+          //}
+          100% {
+            transform: scaleX(1);
+            opacity:0.5;
+          }
         }
 
 
@@ -94,31 +119,47 @@
           text-decoration: none;
           font-size: 2em;
           letter-spacing: 1px;
-
-
-          .logoHeader {
-            width: 12vw;
-            height: auto;
-            margin-top: 2vh;
-            transition: width 0.2s, height 0.2s, transform 0.2s;
-          }
-
-          .miniSize {
-            width: 8vw;
-            height: auto;
-            margin-bottom: 3vh;
-            transition: width 0.2s, height 0.2s, transform 0.2s;
-          }
-
-          .iconHeader {
-            width: 20%;
-            height: auto;
-            margin-right: 2%;
-          }
+          color: white;
+          opacity: 0.85;
         }
 
+        a:hover {
+          opacity: 1;
+          transition: opacity;
+          transition-duration: 0.5s;
+        }
+
+        //a:active{
+        //  color:green;
+        //}
+
+        //a:visited{
+        //  color: #5eb5e0;
+        //}
+
+
+        .logoHeader {
+          width: 12vw;
+          height: auto;
+          margin-top: 2vh;
+          transition: width 0.2s, height 0.2s, transform 0.2s;
+        }
+
+        .miniSize {
+          width: 8vw;
+          height: auto;
+          margin-bottom: 3vh;
+          transition: width 0.2s, height 0.2s, transform 0.2s;
+        }
+
+        .iconHeader {
+          width: 20%;
+          height: auto;
+          margin-right: 2%;
+        }
       }
     }
   }
 }
+
 
