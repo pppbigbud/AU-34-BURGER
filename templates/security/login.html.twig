@@ -7,48 +7,48 @@
 
         <div class="containerLogin">
 
-            <div class="positionRondForm">
-                <div class="rondFond">
-                    <img src="/build/images/userIconConnected.png" class="ConnexionLogoAdmin" alt="ConnexionLogoAdmin">
-                </div>
-            </div>
+{#            <div class="positionRondForm">#}
+{#                <div class="rondFond">#}
+{#                    <img src="/build/images/userIconConnected.png" class="ConnexionLogoAdmin" alt="ConnexionLogoAdmin">#}
+{#                </div>#}
+{#            </div>#}
 
-            <div class="containerUserForm ">
+{#            <div class="containerUserForm ">#}
 
-                <div class="rowUserForm">
-                    {{ form_start(registrationForm) }}
-                    <div class="fondUserForm">
-                        <h1 class="titleForm">Créer un compte</h1>
-                        <div class="spaceRowForm">
-                            {{ form_row(registrationForm.email) }}
-                            {{ form_row(registrationForm.firstname) }}
-                            {{ form_row(registrationForm.lastname) }}
-                            {{ form_row(registrationForm.phone) }}
-                            {{ form_row(registrationForm.plainPassword, {
-                                label: 'Mot de Passe'
-                            }) }}
-                        </div>
-                        <div class="accordCGV">
-                            {{ form_row(registrationForm.agreeTerms, {
-                                label: 'Je suis en accord avec les CGV'
-                            }) }}
-                        </div>
-                    </div>
+{#                <div class="rowUserForm">#}
+{#                    {{ form_start(registrationForm) }}#}
+{#                    <div class="fondUserForm">#}
+{#                        <h1 class="titleForm">Créer un compte</h1>#}
+{#                        <div class="spaceRowForm">#}
+{#                            {{ form_row(registrationForm.email) }}#}
+{#                            {{ form_row(registrationForm.firstname) }}#}
+{#                            {{ form_row(registrationForm.lastname) }}#}
+{#                            {{ form_row(registrationForm.phone) }}#}
+{#                            {{ form_row(registrationForm.plainPassword, {#}
+{#                                label: 'Mot de Passe'#}
+{#                            }) }}#}
+{#                        </div>#}
+{#                        <div class="accordCGV">#}
+{#                            {{ form_row(registrationForm.agreeTerms, {#}
+{#                                label: 'Je suis en accord avec les CGV'#}
+{#                            }) }}#}
+{#                        </div>#}
+{#                    </div>#}
 {#                    class="blocFormBtnValidationUser"#}
-                    <div>
+{#                    <div>#}
 {#                        <button type="submit">Inscription</button>#}
 {#                        {{ form_row(registrationForm.submit, { 'label': 'Ajouter' }) }}#}
-                    </div>
-                    {{ form_end(registrationForm) }}
-                </div>
-            </div>
-        </div>
+{#                    </div>#}
+{#                    {{ form_end(registrationForm) }}#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
 
-        <div class="separateurContainer">
-            <div class="separateur"></div>
-        </div>
+{#        <div class="separateurContainer">#}
+{#            <div class="separateur"></div>#}
+{#        </div>#}
 
-        <div class="containerRegister">
+{#        <div class="containerRegister">#}
 
             <div class="positionRondForm">
                 <div class="rondFond">
@@ -61,31 +61,32 @@
                     {{ form_start(userForm) }}
 
                     <div class="fondUserForm">
-                        <h1 class="titleForm">Connexion</h1>
+                        <h1 class="titleForm">Newsletter</h1>
+                        <h5 class="text-center px-5">Pour rester informé</h5>
 
                         <div class="spaceRowForm">
-                            <label for="inputEmail" class="text-white mb-3">Email</label>
+                            <label for="inputEmail" class="text-white mb-3">Nom</label>
                             <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
                                    class="form-control mb-3"
                                    autocomplete="email" required autofocus>
-                            <label for="inputPassword" class="text-white mb-3">Mot de Passe</label>
+                            <label for="inputPassword" class="text-white mb-3">Email</label>
                             <input type="password" name="password" id="inputPassword" class="form-control mb-3"
                                    autocomplete="current-password" required>
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                         </div>
 
 
-                        <div class="accordCGV">
-                            <label class="form-check">
-                                <input type="checkbox" name="_remember_me"> Se souvenir de moi
-                            </label>
-                        </div>
+{#                        <div class="accordCGV">#}
+{#                            <label class="form-check">#}
+{#                                <input type="checkbox" name="_remember_me"> Se souvenir de moi#}
+{#                            </label>#}
+{#                        </div>#}
 
                     </div>
 
                     <div class="blocFormBtnValidationUser">
                         {#                        <button class="btn btn-lg btn-primary m-4" type="submit"></button> #}
-                        {{ form_row(userForm.submit, { 'label': 'Connexion' }) }}
+                        {{ form_row(userForm.submit, { 'label': 'Envoyer' }) }}
                     </div>
 
                 </div>

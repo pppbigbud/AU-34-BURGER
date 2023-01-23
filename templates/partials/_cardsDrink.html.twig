@@ -1,4 +1,4 @@
-<div class="card m-2">
+<div class="card m-4">
     <div class="imgBx">
         <img src="{{ asset( 'build/images/drink/') ~ drink.imagePath }}" alt="nike-air-shoe">
     </div>
@@ -20,19 +20,15 @@
 
         {% endif %}
 
-        {% if app.user != null %}
-            <a class="btnAjoutCart" href="{{ path('cart_add_drink_id', { 'id': drink.id}) }}">
-                <i class="fa-solid fa-cart-plus"></i> Ajouter au Panier</a>
-
-{#            <a class="btnAjoutCart" data-add-burger-cart="{{ burger.id }}">#}
+{#        {% if app.user != null %}#}
+{#            <a class="btnAjoutCart" data-add-drink-cart="{{ drink.id }}">#}
 {#                <i class="fa-solid fa-cart-plus"></i> Ajouter au Panier</a>#}
+{#        {% endif %}#}
 
-        {% endif %}
-
-        {% if is_granted("ROLE_ADMIN") %}
-            <a class="btnModifierCart" href="{{ path('app_drink_new', {'id': drink.id}) }}">Nouveau</a>
-            <a class="btnModifierCart" href="{{ path('app_drink_edit', {'id': drink.id}) }}">Modifier/Supprimer</a>
-        {% endif %}
+{#        {% if is_granted("ROLE_ADMIN") %}#}
+{#            <a class="btnModifierCart" href="{{ path('app_drink_new', {'id': drink.id}) }}">Nouveau</a>#}
+{#            <a class="btnModifierCart" href="{{ path('app_drink_edit', {'id': drink.id}) }}">Modifier/Supprimer</a>#}
+{#        {% endif %}#}
 
 
 

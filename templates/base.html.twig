@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}Bienvenu!{% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css"
           integrity="sha256-5veQuRbWaECuYxwap/IOE/DAwNxgm4ikX7nrgsqYp88=" crossorigin="anonymous">
     <link rel="icon"
@@ -17,16 +17,17 @@
 </head>
 <body>
 
-{% for message in app.flashes('success') %}
-    <div class="alert alert-success testCACA">
-        {{ message }}
-    </div>
-{% endfor %}
+{#{% for message in app.flashes('success') %}#}
+{#    <div class="alert alert-success testCACA">#}
+{#        {{ message }}#}
+{#    </div>#}
+{#{% endfor %}#}
 
 {% block body %}
     {% block header %}
         {% include('partials/_header.html.twig') %}
-        {{ SideCartCount() | raw }}
+{#        {{ SideCartCount() | raw }}#}
+
     {% endblock %}
 
     <main class="{% block main_class %}{% endblock %}">

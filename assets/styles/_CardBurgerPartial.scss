@@ -26,7 +26,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  //background: #e9781b;
   background: rgb(255, 81, 47);
   background: radial-gradient(circle, rgba(255, 81, 47, 1) 0%, rgba(240, 152, 25, 1) 50%, rgba(255, 81, 47, 1) 100%);
   clip-path: circle(150px at 80% 20%);
@@ -44,6 +43,7 @@
   left: 0%;
   font-size: 16em;
   font-weight: 800;
+  font-family: "Road Rage", serif;
   font-style: italic;
   color: rgba(255, 255, 255, 0.04);
 
@@ -155,18 +155,6 @@
   cursor: pointer;
 }
 
-//.container .card .contentBx .color span:nth-child(2) {
-//  background: #1BBFE9;
-//}
-//
-//.container .card .contentBx .color span:nth-child(3) {
-//  background: #1B2FE9;
-//}
-//
-//.container .card .contentBx .color span:nth-child(4) {
-//  background: #080481;
-//}
-
 .container .card .contentBx a {
   display: inline-block;
   padding: 10px 20px;
@@ -247,10 +235,89 @@
   margin: 0;
 }
 
+.responsiveDnone {
+  display: none;
+}
 
 
+@media (max-width: 1100px) {
+  .responsiveDnone {
+    display: flex;
+
+    .alignementBackground {
+      display: flex;
+
+      .titreBurger {
+        font-family: "Comica Brush", serif;
+        font-size: 9rem;
+      }
+
+      h3 {
+        font-size: 2rem;
+        margin-bottom:2vh;
+      }
+    }
+  }
+
+  .container .card {
+    width: 100%;
+    height: 50vh;
+  }
+
+  .container .card:before {
+    clip-path: circle(300px at 80% 20%);
+  }
+
+  .container .card:hover:before {
+    clip-path: circle(500px at 80% -20%);
+  }
+
+  .container .card:after {
+    top: 30%;
+    left: 20%;
+    font-size: 20em;
+  }
+
+  .container .card .imgBx {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 100%;
+    //height: 100%;
+    transition: .5s;
+  }
+
+  .container .card:hover .imgBx {
+    top: 250px;
+    transform: translateY(-25%);
+  }
+
+  .container .card .imgBx img {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    width: 500px;
+  }
+
+  .contentBx h2{
+    font-size: 5rem;
+  }
+
+  .description {
+    font-size: 2rem;
+    //font-family: "Helvetica Light", sans-serif;
+  }
+
+  .prixBurger{
+    font-size: 4rem;
+    font-family: "Road Rage", serif;
+  }
+
+  .container .card .contentBx {
+    bottom: 250px;
+  }
 
 
-
-
-
+}

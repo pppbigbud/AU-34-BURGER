@@ -31,7 +31,6 @@ class TacosController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $tacosRepository->save($tacos, true);
             $cartServices->addTacos($session, $tacos->getId());
-//            $this->addFlash('success', 'Article Created! Knowledge is power!');
             return $this->redirectToRoute('app_tacos_index');
         }
 

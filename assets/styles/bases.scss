@@ -1,7 +1,12 @@
 html,
 body {
-  font-family: "Poetsen One", sans-serif;
+  font-family: "Coolvetica Compressed Hv", sans-serif;
   color: var(--text-color);
+}
+
+h2 {
+  font-family: "Comica Brush", sans-serif;
+  font-weight: lighter;
 }
 
 p {
@@ -16,7 +21,7 @@ a {
   }
 }
 
-.testCACA{
+.testCACA {
   width: 100% !important;
   height: 20vh !important;
   background-color: yellow !important;

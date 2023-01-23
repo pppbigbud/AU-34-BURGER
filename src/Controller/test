@@ -18,50 +18,40 @@ class CartController extends AbstractController
     public static string $CART = CartService::CART_KEY;
     public static string $ITEM_QTY = 'qty_panier';
 
-    #[Route('/addDrinkToCart/{data}', name: 'app_drink_to_cart')]
-    public function addDrinkToCart(
-        Request          $request,
-        SessionInterface $session
-    ): Response
-
-    {
-        $DataDecoded = json_decode($request->get("data"), true);
-        $drinkID = $DataDecoded["drinkID"];
-
-        dump($DataDecoded);
-
-        return new JsonResponse([]);
-
-    }
-
     #[Route('/addBurgerToCart/{data}', name: 'app_fries_to_cart')]
     public function addBurgerToCart(
         Request          $request,
         SessionInterface $session
     ): Response
-
     {
+
         $DataDecoded = json_decode($request->get("data"), true);
         $burgerId = $DataDecoded["burgerId"];
         $fries = $DataDecoded["fries"];
 
+        dump($DataDecoded);
+//        $duration = $DataDecoded["duration"];
 
 //        $session->remove(self::$CART);
         $panier = $session->get(self::$CART, []);
 
         $nbFries = $fries ? 1 : 0;
 
+        // met à jour le panier en session
         if (!isset($panier['burger'][$burgerId])) {
             $panier['burger'][$burgerId] = [
                 'qty' => 1,
                 'nbFries' => $nbFries,
+//                'duration' => $duration
             ];
         } else {
             $panier['burger'][$burgerId] = [
                 'qty' => $panier['burger'][$burgerId]['qty'] + 1,
                 'nbFries' => $panier['burger'][$burgerId]['nbFries'] + $nbFries,
+//                'duration' => $panier['burger'][$burgerId]['nbFries'] + $duration
             ];
         }
+
         $session->set(self::$CART, $panier);
 
         $qty = 0;
@@ -69,6 +59,7 @@ class CartController extends AbstractController
             $qty += $item['qty'];
         }
         $session->set(self::$ITEM_QTY, $qty);
+
 
 
         return new JsonResponse(['newQty' => $qty]);
@@ -94,13 +85,33 @@ class CartController extends AbstractController
         $totalArticles = 0;
         $priceTotalFries = 0;
 
+//        $DataDecoded = json_decode($request->get("data"), true);
+
 // ---------------------------SESSION CART BURGER et TACOS---------------------------------------------------
 
         $panier = $session->get('panier', []);
 
         foreach ($panier as $typeProduits => $produits) {
 
-            if ($typeProduits === 'tacos') {
+            if ($typeProduits === 'burger') {
+                foreach ($produits as $burgerId => $quantity) {
+                    $burger = $burgerRepository->find($burgerId);
+                    $panierWithData['burger'][] = [
+                        'burger' => $burger,
+                        'quantity' => $quantity,
+                    ];
+
+                    $totalBurger += $burger->getPrice() * $panier['burger'][$burgerId]['qty'];
+
+                    $panierBurgerAll = $panierWithData['burger'];
+
+//                    foreach ($panierBurgerAll as $panierBurgerID) {
+//                        $priceTotalFries = $panierBurgerID['nbFries'] * 2;
+//                    }
+////                    $totalBurgerWithFries = $totalBurger + $priceTotalFries;
+                }
+
+            } else if ($typeProduits === 'tacos') {
                 foreach ($produits as $tacosId => $quantity) {
                     $tacos = $tacosRepository->find($tacosId);
                     $panierWithData['tacos'][] = [
@@ -111,6 +122,7 @@ class CartController extends AbstractController
 
                     $totalTacos += $tacosPrice * $quantity;
                 }
+
             } else if ($typeProduits === 'drink') {
                 foreach ($produits as $drinkId => $quantity) {
                     $drink = $drinkRepository->find($drinkId);
@@ -124,7 +136,7 @@ class CartController extends AbstractController
                 }
             }
         }
-
+        dump($panierWithData['burger']);
         return $this->render('cart/index.html.twig', [
 //            'itemsTotal' => $totalBurgerWithFries + $totalTacos + $totalDrink,
             'itemsBurger' => $panierWithData['burger'],
@@ -139,7 +151,16 @@ class CartController extends AbstractController
         ]);
     }
 
-//    ---------------------- SUP BURGER--------------------------
+//    ----------------------AJOUT et SUP BURGER--------------------------
+
+    #[Route('/panier/add/burger/{id}', name: 'cart_add_burger_id')]
+    public function addBurger(SessionInterface $session, CartService $cartServices, $id): Response
+    {
+
+        $cartServices->addBurgerToCart($session, $id);
+
+        return $this->redirectToRoute('app_burger_index');
+    }
 
     #[Route('/panier/remove/burger/{id}', name: 'cart_remove_burger')]
     public function removeBurger($id, SessionInterface $session, CartService $cartService): Response
@@ -171,7 +192,16 @@ class CartController extends AbstractController
         return $this->redirectToRoute('app_cart', []);
     }
 
-//    ---------------------- SUP DRINK --------------------------
+//    ----------------------AJOUT et SUP DRINK--------------------------
+
+
+    #[Route('/panier/add/drink/{id}', name: 'cart_add_drink_id')]
+    public function addDrink(SessionInterface $session, CartService $cartServices, $id): Response
+    {
+        $cartServices->addDrink($session, $id);
+
+        return $this->redirectToRoute('app_drink_index');
+    }
 
     #[Route('/panier/remove/drink/{id}', name: 'cart_remove_drink')]
     public function removeDrink($id, SessionInterface $session): Response
@@ -185,6 +215,7 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute('app_cart', []);
     }
+
 
 }
 

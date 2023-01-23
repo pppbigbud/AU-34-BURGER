@@ -20,13 +20,11 @@ class CartService
 
         if (!empty($panier['burger'][$id])) {
             $panier['burger'][$id]++;
-
         } else {
-
             $panier['burger'][$id] = 1;
         }
-
         $session->set(self::CART_KEY, $panier);
+        dump($panier['burger']);
     }
 
     public function addTacos(SessionInterface $session, string $id): void

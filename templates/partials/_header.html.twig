@@ -4,7 +4,7 @@
             <div class="blocMenu backHeaderBurger">
                 <a href="{{ path('app_burger_index') }}" class="test">
                     <img class="iconHeader"
-                         src="{{ asset('build/images/burgerPanier.png') }}"
+                         src="{{ asset('/build/images/burgerPanier.png') }}"
                          alt="">BURGERS
                 </a>
                 <div class="testBarre"></div>
@@ -22,8 +22,18 @@
             </div>
 
             <div class="logoHeader" id="test">
-                <img class="logoBloc" id="blocLogo" src="{{ asset('build/images/BurgerLogo.png') }}"
-                     alt="Logo 34 Burger">
+
+                {% if app.request.requestUri == '/drink/' %}
+                    <img class="logoBloc" id="blocLogo" src="{{ asset('build/images/frittesPanier.png') }}"
+                         alt="Logo 34 Burger">
+                {% elseif app.request.requestUri == '/tacos/' %}
+                    <img class="logoBloc" id="blocLogo" src="{{ asset('build/images/tacosPanier.png') }}"
+                         alt="Logo 34 Burger">
+                {% else %}
+                    <img class="logoBloc" id="blocLogo" src="{{ asset('build/images/burgerPanier.png') }}"
+                         alt="Logo 34 Burger">
+                {% endif %}
+
             </div>
 
             <div class="blocMenu backHeaderDrink">
@@ -45,10 +55,57 @@
                 <div class="testBarre"></div>
             </div>
 
-
         </header>
     </div>
 </div>
+
+
+<div class="headerResponsive">
+    <div class="blocMenuResponsive">
+        <div class="linkIMGResp">
+            <a href="{{ path('app_burger_index') }}" class="test">
+                <img class="logoBloc" id="blocLogo" src="{{ asset('build/images/burgerPanier.png') }}"
+                     alt="Logo 34 Burger">
+            </a>
+        </div>
+    </div>
+    <div class="blocMenuResponsive">
+        <div class="linkIMGResp">
+        <a href="{{ path('app_tacos_index') }}" class="test">
+        <img class="iconHeader"
+             src="{{ asset('build/images/tacosPanier.png') }}"
+             alt="">
+        </a>
+        </div>
+    </div>
+    <div class="blocMenuLogoResponsive">
+        <div class="linkIMGResp">
+            <a href="{{ path('app_burger_index') }}" class="test">
+                <img class="logoBloc" id="blocLogo" src="{{ asset('build/images/BurgerLogo.png') }}"
+                     alt="Logo 34 Burger">
+            </a>
+        </div>
+    </div>
+    <div class="blocMenuResponsive">
+        <div class="linkIMGResp">
+            <a href="{{ path('app_burger_index') }}" class="test">
+                <img class="iconHeader"
+                     src="{{ asset('build/images/frittesPanier.png') }}"
+                     alt="">
+            </a>
+        </div>
+    </div>
+    <div class="blocMenuResponsive">
+        <div class="linkIMGResp">
+            <a href="{{ path('app_contact') }}" class="test">
+                <img class="iconHeader"
+                     src="{{ asset('build/images/orderBurger.png') }}"
+                     alt="">
+            </a>
+        </div>
+    </div>
+</div>
+
 
 <script>
     const activePage = window.location.pathname
@@ -81,8 +138,4 @@
             logo.classList.remove('miniSize')
         }
     })
-</script>
-<script>
-
-
 </script>

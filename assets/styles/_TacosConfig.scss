@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 5vh;
+  //margin-top: 5vh;
   z-index: 2;
 
   .imageTacosForm {
@@ -18,7 +18,7 @@
   }
 
   .backgroundTacosConfig {
-    width: 50%;
+    width: 70%;
     height: auto;
     background-color: hsl(0, 0%, 21%);
     border-radius: 10px;
@@ -128,7 +128,7 @@ h1 {
   justify-content: center;
   z-index: -5;
 
- .btnTacosLogin {
+  .btnTacosLogin {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -203,6 +203,51 @@ h1 {
 
   .iconConnectTacos {
     margin-right: 10px;
+  }
+}
+
+.sizeContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.imageSauceFormTacos {
+  width: 10%;
+  height: auto;
+}
+
+.imageSauceFormSauceCheese {
+  width: 30%;
+  height: auto;
+}
+
+.imageSizeFormTacos {
+  width: 5%;
+  height: auto;
+}
+
+.titreTacosAlignement {
+  width: 50%;
+  height: auto;
+
+  .titreTacos {
+    font-family: "Comica Brush", serif;
+    font-size: 10rem;
+    margin-bottom: 0;
+  }
+}
+
+.titreBurgerAlignement {;
+  width: 70%;
+  height: auto;
+
+  .titreBurger {
+    font-size: 5rem;
+    margin-bottom: 0;
   }
 }
 

@@ -4,75 +4,252 @@
 
 {% block main %}
 
-{#    <div class="presentationConfigTacos">#}
-{#        <img src="{{ asset('build/images/chefTacos.png') }}" class="chefTacos" alt="chefTacos">#}
-{#        <p>Configure ton tacos et nous nous chargeons du reste</p>#}
-{#    </div>#}
+
 
     <div class="alignementBackground">
 
-        <img src="{{ asset('build/images/tacos.png') }}" class="imageTacosForm" alt="tacos">
+    <div class="titreTacosAlignement">
+        <h1 class="titreTacos text-white">TACOS</h1>
+        <h3 class="mt-2 mb-5 text-muted text-center">Ci-dessous l'ensemble des possibilités offertes à vous dans l'élaboration de votre sandwich ainsi que
+            les prix correspondants</h3>
+    </div>
+    {#    <div class="titreTacos d-flex"> #}
+    {#        <img src="/build/images/tacosPanier.png" class=""> #}
+    {#        <h1 class="d-flex align-items-center justify-content-center">TACOS</h1> #}
+    {#    </div> #}
 
-        <div class="backgroundTacosConfig">
+    {#    <div class="positionRondForm"> #}
+    {#        <div class="rondFond"> #}
+    {#            <img src="/build/images/tacosPanier.png" class="ConnexionLogoAdmin" alt="ConnexionLogoAdmin"> #}
+    {#        </div> #}
+    {#    </div> #}
 
-            {{ form_start(form) }}
+    <div class="backgroundTacosConfig  p-3">
 
-            <div class="alignementTacosConfigSize">
-                <div class="tailleTacos">
-                    <img src="{{ asset('build/images/tacosSize.png') }}" alt="tacos" class="imageSauceForm">
-                    {{ form_row(form.size) }}
+        <table class="table align-middle mb-0 bg-transparent">
+            <thead class="bg-transparent">
+            <tr>
+                <th class="d-flex justify-content-end"><img src="{{ asset('build/images/tacosSize.png') }}" alt="tacos"
+                                                            class="imageSizeFormTacos p-1"></th>
+                <th><h2 class="text-white text-center">L</h2></th>
+                <th><h2 class="text-white text-center">XL</h2></th>
+                <th><h2 class="text-white text-center">XXL</h2></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+
+                    <div class="d-flex flex-row align-items-center ms-3">
+                        <img src="{{ asset('build/images/Beef.png') }}" alt="tacos"
+                             class="imageSauceFormTacos p-1">
+                        <h3 class="fw-normal mb-1 text-white text-center p-1">Boeuf</h3>
+                        <p class="text-muted p-1">Salade, Tomate, Oignon, Viande de bœuf haché</p>
+                    </div>
+
+                </td>
+                <td>
+                    <h2 class="text-white text-center">7€</h2>
+                </td>
+                <td>
+                    <h2 class="text-white text-center">8.5€</h2>
+                </td>
+                <td>
+                    <h2 class="text-white text-center">10€</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <div class="d-flex flex-row align-items-center ms-3">
+                        <img src="{{ asset('build/images/Chiken.png') }}" alt="tacos"
+                             class="imageSauceFormTacos p-1">
+                        <h3 class="fw-normal mb-1 text-white text-center p-1">Poulet</h3>
+                        <p class="text-muted p-1">Salade, Tomate, Oignon, Poulet mariné</p>
+                    </div>
+
+                </td>
+                <td>
+                    <h2 class="text-white text-center">7€</h2>
+                </td>
+                <td>
+                    <h2 class="text-white text-center">8.5€</h2>
+                </td>
+                <td>
+                    <h2 class="text-white text-center">10€</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+
+                    <div class="d-flex flex-row align-items-center ms-3">
+                        <img src="{{ asset('build/images/Carotte.png') }}" alt="tacos"
+                             class="imageSauceFormTacos p-1">
+                        <h3 class="fw-normal mb-1 text-white text-center p-1">Végétarien</h3>
+                        <p class="text-muted p-1">Salade, Tomate, Oignon, Galette de pomme de terre</p>
+                    </div>
+
+                </td>
+                <td>
+                    <h2 class="text-white text-center">5.5€</h2>
+                </td>
+                <td>
+                    <h2 class="text-white text-center">7€</h2>
+                </td>
+                <td>
+                    <h2 class="text-white text-center">8.5€</h2>
+                </td>
+            </tr>
+
+
+            </tbody>
+        </table>
+
+        <div class="alignementFromageSauce d-flex flex-row justify-content-center">
+
+            <div class="alignementFromageSauce d-flex flex-column">
+                <div class="centrageTitre d-flex justify-content-center">
+                    <div class="d-flex flex-row justify-content-center align-items-center ms-3">
+                        <img src="{{ asset('build/images/cheeseTacosConfig.png') }}" alt="tacos"
+                             class="imageSauceFormSauceCheese p-1">
+                        <h3 class="fw-normal mb-1 text-white text-center p-1">Fromages</h3>
+                    </div>
                 </div>
-                <div class="viandeTacos">
-                    <img src="{{ asset('build/images/tacosMeat.png') }}" alt="tacos" class="imageSauceForm">
-                    {{ form_row(form.meat) }}
-                </div>
+
+                <ul class="text-center">
+                    <li class="text-muted p-1">Cheddar</li>
+                    <li class="text-muted p-1">Emmental</li>
+                    <li class="text-muted p-1">Bleu d'Auvergne</li>
+                    <li class="text-muted p-1">Chèvre</li>
+                    <li class="text-muted p-1">Reblochon</li>
+                    <li class="text-muted p-1">Raclette</li>
+                    <li class="text-muted p-1">Cantal</li>
+                </ul>
             </div>
 
-            <div class="alignementTacosConfigSauce">
-                <div class="sauceTacos">
-                    <img src="{{ asset('build/images/sauceTacos.png') }}" alt="tacos" class="imageSauceForm">
-                    {{ form_row(form.sauce) }}
+            <div class="alignementFromageSauce d-flex flex-column">
+                <div class="centrageTitre d-flex justify-content-center">
+                    <div class="d-flex flex-row justify-content-center align-items-center ms-3">
+                        <img src="{{ asset('build/images/sauceTacos.png') }}" alt="tacos"
+                             class="imageSauceFormSauceCheese p-1 mt-2">
+                        <h3 class="fw-normal mb-1 text-white text-center p-1">Sauces</h3>
+                    </div>
                 </div>
-                <div class="fromageTacos">
-                    <img src="{{ asset('build/images/cheeseTacosConfig.png') }}" alt="tacos" class="imageSauceForm">
-                    {{ form_row(form.cheese) }}
-                </div>
+
+                <ul class="text-center">
+                    <li class="text-muted p-1">Mayonnaise</li>
+                    <li class="text-muted p-1">Ketchup</li>
+                    <li class="text-muted p-1">Moutarde</li>
+                    <li class="text-muted p-1">Barbecue</li>
+                    <li class="text-muted p-1">Moutarde à l'ancienne</li>
+                    <li class="text-muted p-1">Algérienne</li>
+                    <li class="text-muted p-1">Américaine</li>
+                    <li class="text-muted p-1">Tartare</li>
+                </ul>
             </div>
+
         </div>
 
-        {#- -----------Si connecté et pas USER----------- -#}
-        {% if app.user != null %}
-            <div class="blocFormBtnTacos">
-            <button type="submit" class="btnTacosLogin">
-                <i class="iconConnectTacos fa-solid fa-cart-plus"></i>
-                Ajouter au Panier
-            </button>
+        {#            {{ form_start(form) }} #}
 
-            {#- -----------Si connecté et ADMIN--------------- -#}
-            {% if is_granted("ROLE_ADMIN") %}
-                <a class="btnTacosCreate" href="{{ path('app_tacos_new') }}">
-                    <i class="fa-solid fa-cart-plus"></i>
-                    Nouveaux Ingrédients
-                </a>
-                </div>
-                {#                <a class="btnModifierCart" href="{{ path('app_tacos_index') }}">Modifier/Supprimer</a> #}
-            {% endif %}
+        {#            <div class="alignementTacosConfigSize"> #}
+        {#                <div class="tailleTacos"> #}
+        {#                    <img src="{{ asset('build/images/tacosSize.png') }}" alt="tacos" class="imageSauceForm"> #}
+        {#                    <div class="sizeContainer"> #}
+        {#                        <h3>Tailles</h3> #}
+        {#                        <ul> #}
+        {#                            <li>L</li> #}
+        {#                            <li>XL</li> #}
+        {#                            <li>XXL</li> #}
+        {#                        </ul> #}
+        {#                    </div> #}
+        {#                    #}{#                    {{ form_row(form.size) }} #}
+        {#                </div> #}
+        {#                <div class="viandeTacos"> #}
+        {#                    <img src="{{ asset('build/images/tacosMeat.png') }}" alt="tacos" class="imageSauceForm"> #}
+        {#                    <div class="sizeContainer"> #}
+        {#                        <h3>Viandes</h3> #}
+        {#                       <ul> #}
+        {#                           <li>Boeuf</li> #}
+        {#                           <li>Poulet</li> #}
+        {#                           <li>Végétarien</li> #}
+        {#                       </ul> #}
+        {#                    </div> #}
+        {#                    #}{#                    {{ form_row(form.meat) }} #}
+        {#                </div> #}
+        {#            </div> #}
 
-        {% endif %}
+        {#            <div class="alignementTacosConfigSauce"> #}
+        {#                <div class="sauceTacos"> #}
+        {#                    <img src="{{ asset('build/images/sauceTacos.png') }}" alt="tacos" class="imageSauceForm"> #}
+        {#                    <div class="sizeContainer"> #}
+        {#                        <h3>Sauces</h3> #}
+        {#                        <ul> #}
+        {#                            <li>Mayonnaise</li> #}
+        {#                            <li>Ketchup</li> #}
+        {#                            <li>Moutarde</li> #}
+        {#                            <li>Barbecue</li> #}
+        {#                            <li>Moutarde à l'ancienne</li> #}
+        {#                            <li>Algérienne</li> #}
+        {#                            <li>Américaine</li> #}
+        {#                            <li>Tartare</li> #}
+        {#                        </ul> #}
+        {#                    </div> #}
+        {#                    #}{#                    {{ form_row(form.sauce) }} #}
+        {#                </div> #}
+        {#                <div class="fromageTacos"> #}
+        {#                    <img src="{{ asset('build/images/cheeseTacosConfig.png') }}" alt="tacos" class="imageSauceForm"> #}
+        {#                    <div class="sizeContainer"> #}
+        {#                        <h3>Fromages</h3> #}
+        {#                        <ul> #}
+        {#                            <li>Cheddar</li> #}
+        {#                            <li>Emmental</li> #}
+        {#                            <li>Bleu d'Auvergne</li> #}
+        {#                            <li>Chèvre</li> #}
+        {#                            <li>Reblochon</li> #}
+        {#                            <li>Raclette</li> #}
+        {#                            <li>Cantal</li> #}
+        {#                        </ul> #}
+        {#                    </div> #}
+        {#                    #}{#                    {{ form_row(form.cheese) }} #}
+        {#                </div> #}
+        {#            </div> #}
+        {#        </div> #}
 
-        {#- -----------Si connecté et USER--------------- -#}
-        {% if app.user == null %}
-            <div class="blocFormBtnTacos">
-                <a class="btnTacosCreate" href="{{ path('app_login') }}">
-                    <i class="iconConnectTacos fa-solid fa-person-chalkboard"></i>
-                    Créer un compte
-                </a>
-                <a class="btnTacosLogin" href="{{ path('app_login') }}">
-                    <i class="iconConnectTacos fa-solid fa-key"></i>
-                    Se connecter
-                </a>
-            </div>
-        {% endif %}
-        {{ form_end(form) }}
+        {#        #}{#- -----------Si connecté et pas USER----------- -#}
+        {#        {% if app.user != null %} #}
+        {#            <div class="blocFormBtnTacos"> #}
+        {#            <button type="submit" class="btnTacosLogin"> #}
+        {#                <i class="iconConnectTacos fa-solid fa-cart-plus"></i> #}
+        {#                Ajouter au Panier #}
+        {#            </button> #}
+
+        {#            #}{#- -----------Si connecté et ADMIN--------------- -#}
+        {#            {% if is_granted("ROLE_ADMIN") %} #}
+        {#                <a class="btnTacosCreate" href="{{ path('app_tacos_new') }}"> #}
+        {#                    <i class="fa-solid fa-cart-plus"></i> #}
+        {#                    Nouveaux Ingrédients #}
+        {#                </a> #}
+        {#                </div> #}
+        {#                #}{#                <a class="btnModifierCart" href="{{ path('app_tacos_index') }}">Modifier/Supprimer</a> #}
+        {#            {% endif %} #}
+
+        {#        {% endif %} #}
+
+        {#        #}{#- -----------Si connecté et USER--------------- -#}
+        {#        {% if app.user == null %} #}
+        {#            <div class="blocFormBtnTacos"> #}
+        {#                <a class="btnTacosCreate" href="{{ path('app_login') }}"> #}
+        {#                    <i class="iconConnectTacos fa-solid fa-person-chalkboard"></i> #}
+        {#                    Créer un compte #}
+        {#                </a> #}
+        {#                <a class="btnTacosLogin" href="{{ path('app_login') }}"> #}
+        {#                    <i class="iconConnectTacos fa-solid fa-key"></i> #}
+        {#                    Se connecter #}
+        {#                </a> #}
+        {#            </div> #}
+        {#        {% endif %} #}
+        {#        {{ form_end(form) }} #}
     </div>
 {% endblock %}
